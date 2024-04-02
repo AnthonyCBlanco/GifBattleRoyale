@@ -9,7 +9,12 @@ const typeDefs = `
     type Prompt {
         _id: ID!
         text: String!
-        gifEndpoints: [String]
+        gifs: [Gif]
+    }
+
+    type Gif {
+        endpoint: String!
+        votes: Int
     }
 
     type Auth {
