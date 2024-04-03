@@ -1,0 +1,26 @@
+@import '../../src/vars.css';
+
+.homepage {
+  font-family: 'Arial', sans-serif;
+  color: var(--color-text); 
+}
+
+.navbar {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: 10px 20px;
+}
+
+.playNowBtn {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+h2 {
+  color: var(--color-grey); 
+}
+

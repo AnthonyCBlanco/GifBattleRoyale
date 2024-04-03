@@ -1,4 +1,5 @@
-import './App.css';
+import './app.module.css';
+import Homepage from './homepage/homepage.jsx';
 
 import {
   ApolloClient,
@@ -30,7 +31,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      
+      <Homepage/>
     </ApolloProvider>
   );
 }
