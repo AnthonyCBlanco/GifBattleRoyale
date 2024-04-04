@@ -1,7 +1,7 @@
 import React from "react";
 import './gameplay.css';
 
-function Gameplay() {
+function GamePage() {
     return (
         <div className="gameplay">
             <div className="gameplay-header">
@@ -12,11 +12,6 @@ function Gameplay() {
 
 
         </div>
+    )}
 
-
-
-
-
-
-
-        </div>
+export default GamePage

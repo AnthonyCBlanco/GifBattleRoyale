@@ -1,18 +1,11 @@
 import React from 'react';
 import './homepage.css';
+import MainNavbar from '../components/navbar';
 
 function HomePage() {
   return (
     <div className="homepage">
-      <nav className="navbar">
-        <a className='title' href="/">GIF BATTLE ROYALE</a>
-        <ul className="navList">
-          <li className="navItem"><a href='/home'>Home</a></li>
-          <li className="navItem"Play Game</li>
-          <li className="navItem"<a href='/leaderboard'>Leaderboard</a></li>
-          <li className="logInBtn"> <a href='/login'> Login </a> </li>
-        </ul>
-      </nav>
+      <MainNavbar/>
 
       <section className="heroSection">
         <h1>The ultimate challenge of choosing the most popular GIFs. Ready to test your intuition?</h1>
@@ -35,6 +28,6 @@ function HomePage() {
       </section>
     </div>
   );
-  }
+}
 
 export default HomePage;
