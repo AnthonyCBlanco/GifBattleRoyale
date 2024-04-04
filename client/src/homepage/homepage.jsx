@@ -5,6 +5,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <nav className="navbar">
+        <a className='title' href="/">GIF Battle Royale</a>
         <ul className="navList">
           <li className="navItem">Home</li>
           <li className="navItem">About</li>
@@ -14,8 +15,7 @@ function HomePage() {
       </nav>
 
       <section className="heroSection">
-        <h1>Welcome to GIF Battle!</h1>
-        <p>The ultimate challenge of choosing the most popular GIFs. Ready to test your intuition?</p>
+        <h1>The ultimate challenge of choosing the most popular GIFs. Ready to test your intuition?</h1>
         <button className="playNowBtn">Play Now</button>
       </section>
 

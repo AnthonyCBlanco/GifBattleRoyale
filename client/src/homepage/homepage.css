@@ -4,22 +4,42 @@
 .homepage {
   font-family: "Outfit", sans-serif;
   color: black; 
+  background-color: bisque;
+  height: 100%;
+  width: 100%;
 }
 
 .navbar {
+  position: relative;
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
-  background-color: var(--color-primary);
+  background-color: var(--color-yellow);
   color: var(--color-text);
-  padding: 10px 20px;
+  padding: 0 10%;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-grey);
 }
 
 .navList {
+  float: right;
   list-style: none; 
-  margin: 0; 
-  padding: 0; 
 }
+
+.heroSection, .gameDescription, .howToPlay {
+  text-align: center;
+}
+
+.heroSection h1 {
+  justify-content: center;
+  text-align: center;
+}
+
 
 .navItem {
   margin-right: 20px; 
