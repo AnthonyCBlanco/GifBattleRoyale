@@ -32,7 +32,7 @@
   list-style: none; 
 }
 
-.navList li {
+.navList, .logInBtn li {
   color:var(--color-grey);
 }
 
@@ -51,6 +51,11 @@
 }
 
 .navItem:hover { 
+  background-color: var(--color-secondary);
+  color: #fff; 
+}
+
+.logInBtn:hover {
   background-color: var(--color-secondary);
   color: #fff; 
 }

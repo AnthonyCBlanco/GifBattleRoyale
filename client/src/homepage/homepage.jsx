@@ -8,9 +8,9 @@ function HomePage() {
         <a className='title' href="/">GIF BATTLE ROYALE</a>
         <ul className="navList">
           <li className="navItem">Home</li>
-          <li className="navItem">About</li>
           <li className="navItem">Play Game</li>
           <li className="navItem">Leaderboard</li>
+          <li className="logInBtn"> <a href='/login'> </a>Login </li>
         </ul>
       </nav>
 
