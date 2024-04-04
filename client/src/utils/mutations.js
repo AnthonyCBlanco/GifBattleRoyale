@@ -24,4 +24,15 @@ export const ADD_USER = gql`
   }
   `;
 
-  
+export const ADD_SCORE = gql`
+  mutation addScore($username: String!, $score: Number!) {
+    addScore($username: String!, $score: Number!) {
+      token
+      user {
+        _id
+        username
+        higheScore
+      }
+    }
+  }
+`
