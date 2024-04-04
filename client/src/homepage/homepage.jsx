@@ -10,7 +10,7 @@ function HomePage() {
           <li className="navItem">Home</li>
           <li className="navItem">Play Game</li>
           <li className="navItem">Leaderboard</li>
-          <li className="logInBtn"> <a href='/login'> </a>Login </li>
+          <li className="logInBtn"> <a href='/login.jsx'> </a>Login </li>
         </ul>
       </nav>
 
