@@ -1,7 +1,7 @@
 {
   "name": "gifbattleroyale",
   "version": "1.0.0",
-  "description": "@TODO: Please update",
+  "description": "This is a project for non-stop fun and gen z excitement ",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
