@@ -12,6 +12,6 @@ const promptSchema = new Schema(
     }
 )
 
-const Prompt = model('Prompy', promptSchema)
+const Prompt = model('Prompt', promptSchema) // @TODO: This should be 'Prompt'
 
 module.exports = Prompt
