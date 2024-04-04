@@ -25,14 +25,14 @@ export const ADD_USER = gql`
   `;
 
 export const ADD_SCORE = gql`
-  mutation addScore($username: String!, $score: Number!) {
-    addScore($username: String!, $score: Number!) {
+  mutation addScore($username: String!, $score: Int!) {
+    addScore(username: $username, score: $score) {
       token
       user {
         _id
         username
-        higheScore
+        highScore
       }
     }
   }
-`
+`;
