@@ -14,7 +14,7 @@ const typeDefs = `
 
     type Gif {
         endpoint: String!
-        votes: Int! = 0
+        votes: Int! 
     }
 
     type Auth {
