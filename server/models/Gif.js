@@ -9,6 +9,7 @@ const gifSchema = new Schema(
         },
         votes: {
             type: Int
+            // @TODO: Make this required but just default it to 0, to prevent something from ever accidentally showing null votes
         }
     }
 )
