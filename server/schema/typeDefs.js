@@ -14,7 +14,7 @@ const typeDefs = `
 
     type Gif {
         endpoint: String!
-        votes: Int
+        votes: Int! 
     }
 
     type Auth {
@@ -25,7 +25,14 @@ const typeDefs = `
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
+        addScore(email: String!, score: Int): User
       }
+
+    type Query {
+        me: User
+        prompt: Prompt
+        leaderboard: User
+    }
 `
 
 module.exports = typeDefs;

@@ -1,7 +1,7 @@
 {
   "name": "gifbattleroyale",
   "version": "1.0.0",
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "This is a project for non-stop fun and gen z excitement ",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
