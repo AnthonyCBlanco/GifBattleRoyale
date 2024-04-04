@@ -5,7 +5,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <nav className="navbar">
-        <a className='title' href="/">GIF Battle Royale</a>
+        <a className='title' href="/">GIF BATTLE ROYALE</a>
         <ul className="navList">
           <li className="navItem">Home</li>
           <li className="navItem">About</li>
