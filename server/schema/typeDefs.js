@@ -30,6 +30,8 @@ const typeDefs = `
 
     type Query {
         me: User
+        prompt: Prompt
+        leaderboard: User
     }
 `
 
