@@ -53,8 +53,8 @@ const resolvers = {
           const token = signToken(user);
           return { token, user };
         },
-        addScore: async (parent, { score, email}) => {
-            const user = await User.findOneAndUpdate({ email }, {score: highscore});
+        addScore: async (parent, { score, username}) => {
+            const user = await User.findOneAndUpdate({ username }, {score: highscore});
             console.log(user)
             return(user)
         }
