@@ -14,7 +14,7 @@ const typeDefs = `
 
     type Gif {
         endpoint: String!
-        votes: Int // @TODO: Go ahead and make this required, when a gif is new the value will be 0. But having it be 0 over null might prevent later runtime errors trying to check against a null vote count
+        votes: required // @: Go ahead and make this required, when a gif is new the value will be 0. But having it be 0 over null might prevent later runtime errors trying to check against a null vote count
     }
 
     type Auth {

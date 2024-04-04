@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { GraphQLError } = require('graphql');
 // set token secret and expiration date
-const secret = 'mysecretsshhhhh'; // @TODO: Please change this secret, so nobody else in the class can hack your JWTs
+const secret = 'joker2'; // @TODO: Please change this secret, so nobody else in the class can hack your JWTs
 const expiration = '2h';
 module.exports = {
   AuthenticationError: new GraphQLError('Could not authenticate user.', {
