@@ -1,0 +1,105 @@
+@import '../vars.css';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.homepage {
+  font-family: "Outfit", sans-serif;
+  color: black; 
+  background-color: bisque;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  position: relative;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: var(--color-yellow);
+  color: var(--color-text);
+  padding: 0 10%;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  color: var(--color-grey);
+}
+
+.navList {
+  float: right;
+  list-style: none; 
+}
+
+.navList, .logInBtn li {
+  color:var(--color-grey);
+}
+
+.heroSection, .gameDescription, .howToPlay {
+  text-align: center;
+}
+
+.heroSection h1 {
+  justify-content: center;
+  text-align: center;
+}
+
+.navItem {
+  margin-right: 20px; 
+  cursor: pointer; 
+}
+
+.navItem:hover { 
+  background-color: var(--color-secondary);
+  color: #fff; 
+}
+
+.logInBtn:hover {
+  background-color: var(--color-secondary);
+  color: #fff; 
+}
+
+.playNowBtn {
+font-family: "Outfit", sans-serif;
+font-weight: 500;
+font-size: 28px;
+margin: 0 auto;
+color: #fff;
+background: var(--color-secondary);
+padding: 10px 30px;
+border: solid #323031 2px;
+box-shadow: none;
+border-radius: 31px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+text-align: center;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+/* Media Queries for Mobile Responsiveness */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .navList {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+
+  .navItem {
+    margin-right: 0; 
+    margin-bottom: 10px; 
+    text-align: center; 
+    width: 100%; 
+  }
+}
+
+
