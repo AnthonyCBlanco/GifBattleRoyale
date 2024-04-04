@@ -6,9 +6,15 @@ export const QUERY_ME = gql`
       _id
       username
       email
-       {
-        postId
-      }
+      highestScore 
+    }
+    prompt {
+      text
+      gifs
+    }
+    leaderboards {
+      highestScore
+      username
     }
   }
 `;

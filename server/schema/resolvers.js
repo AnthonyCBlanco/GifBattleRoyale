@@ -23,10 +23,9 @@ const resolvers = {
         },
         leaderboard: async (parent, args) => {
           const leaderboardData = await User
-          .find()
-          .sort({ highscore: -1 }) 
-          .limit(10)
-
+          .find({})
+          .select({ "username": 1, "highscore": 1})
+          
           return leaderboardData
         }
     },
