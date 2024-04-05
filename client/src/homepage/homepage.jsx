@@ -9,7 +9,7 @@ function HomePage() {
 
       <section className="heroSection">
         <h1>The ultimate challenge of choosing the most popular GIFs. Ready to test your intuition?</h1>
-        <button className="playNowBtn">Play Now</button>
+        <button className="playNowBtn" href='/play'>Play Now</button>
       </section>
 
       <section className="gameDescription">
