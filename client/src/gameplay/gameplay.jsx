@@ -1,30 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import './gameplay.css';
 import { Row, Col, Container, Button } from 'react-bootstrap'
 import { QUERY_PROMPT } from "../utils/queries.js";
-import {useQuery} from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { Chart } from "react-google-charts";
 
-export const data = [
-    ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7],
-  ];
+const GamePage = () => {
+    const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
+    const [promptIndex, setPromptIndex] = useState(0);
 
-  export const options = {
-    title: "My Daily Activities",
-  };
+    const handleNextClick = () => {
+        // Logic to handle next prompt
+        setPromptIndex(prevIndex => prevIndex + 1);
+    }
 
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-function GamePage() {
-    const { loading, error, data } = useQuery(QUERY_PROMPT)
+    const { prompt } = promptData // Get the current prompt
+    console.log(prompt)
 
-    const prompt = data
-    console.log(error)
-    console.log(data)
     return (
         <Container>
             <Row>
@@ -33,33 +28,37 @@ function GamePage() {
                 </Col>
             </Row>
 
-
             <Row>
                 <Col xs={6}>
-                    <p className="Prompt">You just got in a car accident. What is your reaction?</p>
+                    <p className="Prompt">{prompt[0].text}</p> {/* Render the current prompt */}
                 </Col>
             </Row>
+            
+            {/* Render buttons with GIFs */}
             <Row>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/b8gWCDKua2oAAAAd/side-eye.gif" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/47qpxBq_Tw0AAAAd/cat-cat-meme.gif" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/Z0_epChCzkMAAAAC/cat-standing.gif" /></Button></Col>
+                <Col> <Button variant="dark"><img src={prompt[0].gifs[0].endpoint} alt="GIF 1" /></Button></Col>
+                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/47qpxBq_Tw0AAAAd/cat-cat-meme.gif" alt="GIF 2" /></Button></Col>
+                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="GIF 3" /></Button></Col>
+                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/Z0_epChCzkMAAAAC/cat-standing.gif" alt="GIF 4" /></Button></Col>
             </Row>
             <br />
 
+            {/* Render Pie Chart */}
             <Chart
                 chartType="PieChart"
-                data={data}
-                options={options}
+                data={[["Task", "Hours per Day"], ["Work", 11], ["Eat", 2], ["Commute", 2], ["Watch TV", 2], ["Sleep", 7]]} // Sample data, replace it with actual data
+                options={{ title: "My Daily Activities" }}
                 width={"100%"}
-                height={"400px"} />
+                height={"400px"}
+            />
 
-        <Row>
-                <Col><Button variant="dark">Next</Button></Col>
+            {/* Next Button */}
+            <Row>
+                <Col><Button variant="dark" onClick={handleNextClick}>Next</Button></Col>
                 <Col></Col>
             </Row>
         </Container>
-    )
+    );
 }
 
-export default GamePage
+export default GamePage;

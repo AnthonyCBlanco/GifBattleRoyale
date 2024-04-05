@@ -3,7 +3,7 @@ const promptsData = [
         text: "You just got in a car accident. What is your reaction?",
         gifs: [
             {
-                endpoint: "https://tenor.com/v4eC.gif",
+                endpoint: "https://media1.tenor.com/m/47L_ZxE5nWoAAAAC/pay-me-rihanna.gif",
                 caption: "You better have insurance"
             },
             {
@@ -36,7 +36,7 @@ const promptsData = [
                 caption: "Say no"
             },
             {
-                endpoint: "https://tenor.com/Zvtz.gif",
+                endpoint: "https://media1.tenor.com/m/yzCYCtyitmUAAAAC/my-momma-said-cardi-b.gif",
                 caption: "Tell one of your siblings to do it"
             }
         ]
