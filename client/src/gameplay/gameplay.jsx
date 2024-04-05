@@ -30,16 +30,16 @@ const GamePage = () => {
 
             <Row>
                 <Col xs={6}>
-                    <p className="Prompt">{prompt[0].text}</p> {/* Render the current prompt */}
+                    <p className="Prompt">{prompt[promptIndex].text}</p> {/* Render the current prompt */}
                 </Col>
             </Row>
             
             {/* Render buttons with GIFs */}
             <Row>
-                <Col> <Button variant="dark"><img src={prompt[0].gifs[0].endpoint} alt="GIF 1" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/47qpxBq_Tw0AAAAd/cat-cat-meme.gif" alt="GIF 2" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="GIF 3" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/Z0_epChCzkMAAAAC/cat-standing.gif" alt="GIF 4" /></Button></Col>
+                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[0].endpoint} alt="GIF 1" /></Button></Col>
+                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[1].endpoint}  alt="GIF 2" /></Button></Col>
+                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[2].endpoint}  alt="GIF 3" /></Button></Col>
+                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[3].endpoint}  alt="GIF 4" /></Button></Col>
             </Row>
             <br />
 

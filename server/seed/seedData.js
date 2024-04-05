@@ -1,5 +1,6 @@
+
 const promptsData = [
-        {
+    {
         text: "You just got in a car accident. What is your reaction?",
         gifs: [
             {
@@ -15,9 +16,9 @@ const promptsData = [
                 caption: "RUN!... I don't have insurance"
             },
             {
-                url: "https://media1.tenor.com/m/JlVduOJbykoAAAAd/fix.gif",
+                endpoint: "https://media1.tenor.com/m/JlVduOJbykoAAAAd/fix.gif",
                 caption: "Try to fix it before your parents see"
-            }
+    }
         ]
     },
     {
@@ -26,6 +27,7 @@ const promptsData = [
             {
                 endpoint: "https://media1.tenor.com/m/k6oIh3vyZ9kAAAAC/tantrum-kicking.gif",
                 caption: "Throw a secret tantrum"
+
             },
             {
                 endpoint: "https://media1.tenor.com/m/dXuGmGt9O2QAAAAC/kitchen-bosch.gif",
@@ -38,7 +40,7 @@ const promptsData = [
             {
                 endpoint: "https://media1.tenor.com/m/yzCYCtyitmUAAAAC/my-momma-said-cardi-b.gif",
                 caption: "Tell one of your siblings to do it"
-            }
+            },
         ]
     },
     {
@@ -154,7 +156,7 @@ const promptsData = [
                 caption: "Anime"
             },
             {
-                endpoint: "https://tenor.com/view/jabbing-henry-danger-boxing-punches-virtual-gaming-gif-23581342",
+                endpoint: "https://media1.tenor.com/m/TT2JsPgGaK0AAAAC/jabbing-henry-danger.gif",
                 caption: "Playing a game"
             },
             {
@@ -189,11 +191,9 @@ const promptsData = [
             },
         ]
     }
-];
-
-
-module.exports = promptsData;
 
     
 ]
+
+module.exports = promptsData;
 
