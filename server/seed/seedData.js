@@ -1,9 +1,8 @@
-
 const promptsData = [
-    {
+        {
         text: "You just got in a car accident. What is your reaction?",
         gifs: [
-
+            {
                 endpoint: "https://tenor.com/v4eC.gif",
                 caption: "You better have insurance"
             },
@@ -18,7 +17,7 @@ const promptsData = [
             {
                 endpoint: "https://tenor.com/bslXo.gif",
                 caption: "Try to fix it before your parents see"
-    }
+            }
         ]
     },
     {
@@ -27,7 +26,6 @@ const promptsData = [
             {
                 endpoint: "https://tenor.com/bKNxf.gif",
                 caption: "Throw a secret tantrum"
-
             },
             {
                 endpoint: "https://tenor.com/bucC1.gif",
@@ -40,24 +38,9 @@ const promptsData = [
             {
                 endpoint: "https://tenor.com/Zvtz.gif",
                 caption: "Tell one of your siblings to do it"
-            },
+            }
         ]
     },
-
-                endpoint: "https://media1.tenor.com/m/b8gWCDKua2oAAAAd/side-eye.gif"
-            },
-            {
-                endpoint: "https://media1.tenor.com/m/b8gWCDKua2oAAAAd/side-eye.gif"
-            },
-            {
-                endpoint: "https://media1.tenor.com/m/b8gWCDKua2oAAAAd/side-eye.gif"
-            },
-            {
-                endpoint: "https://media1.tenor.com/m/b8gWCDKua2oAAAAd/side-eye.gif"
-            },
-        ]
-    }, 
-
     {
         text: "You’re starving and you only have $5.75 in your bank account. What do you do?",
         gifs: [
@@ -206,8 +189,6 @@ const promptsData = [
             },
         ]
     }
+];
 
-    }
-]
-
-module.exports = propmtData
+module.exports = promptsData;
