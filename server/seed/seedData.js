@@ -103,3 +103,5 @@ const propmtData = [
         ]
     }
 ]
+
+module.exports = propmtData
