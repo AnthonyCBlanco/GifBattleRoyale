@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { QUERY_PROMPT } from "../utils/queries.js";
 import { useQuery } from "@apollo/client";
 import { Chart } from "react-google-charts";
+import './gameplay.css';
 
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
@@ -42,7 +43,7 @@ const GamePage = () => {
                 {prompt[promptIndex].gifs.map((gif, index) => (
                     <Col key={index}>
                         <Button variant="dark">
-                            <img src={gif.endpoint} alt={`GIF ${index + 1}`} />
+                            <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
                         </Button>
                     </Col>
                 ))}

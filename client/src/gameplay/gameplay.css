@@ -3,6 +3,7 @@ img{
     aspect-ratio: 1/1;
 }
 
-.prompt{
-    
+button{ 
+     min-width: 226px;
+     min-height: 214;
 }
