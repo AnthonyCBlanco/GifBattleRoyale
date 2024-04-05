@@ -10,6 +10,7 @@ const typeDefs = `
         _id: ID!
         text: String!
         gifs: [Gif]
+        caption:String!
     }
 
     type Gif {
