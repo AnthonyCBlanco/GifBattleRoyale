@@ -1,25 +1,24 @@
+
 const promptsData = [
-        {
+    {
         text: "You just got in a car accident. What is your reaction?",
         gifs: [
             {
-
-                endpoint: "https://tenor.com/v4eC.gif",
-
+                url: "https://media1.tenor.com/m/47L_ZxE5nWoAAAAC/pay-me-rihanna.gif",
                 caption: "You better have insurance"
             },
             {
-                endpoint: "https://media1.tenor.com/m/aFNnsa3vBEIAAAAd/crying-driving.gif",
+                url: "https://media1.tenor.com/m/aFNnsa3vBEIAAAAd/crying-driving.gif",
                 caption: "I just got the car"
             },
             {
-                endpoint: "https://media1.tenor.com/m/x9TVlnGxiJkAAAAC/kid-run.gif",
+                url: "https://media1.tenor.com/m/x9TVlnGxiJkAAAAC/kid-run.gif",
                 caption: "RUN!... I don't have insurance"
             },
             {
                 url: "https://media1.tenor.com/m/JlVduOJbykoAAAAd/fix.gif",
                 caption: "Try to fix it before your parents see"
-            }
+    }
         ]
     },
     {
@@ -28,6 +27,7 @@ const promptsData = [
             {
                 endpoint: "https://media1.tenor.com/m/k6oIh3vyZ9kAAAAC/tantrum-kicking.gif",
                 caption: "Throw a secret tantrum"
+
             },
             {
                 endpoint: "https://media1.tenor.com/m/dXuGmGt9O2QAAAAC/kitchen-bosch.gif",
@@ -40,7 +40,7 @@ const promptsData = [
             {
                 endpoint: "https://media1.tenor.com/m/yzCYCtyitmUAAAAC/my-momma-said-cardi-b.gif",
                 caption: "Tell one of your siblings to do it"
-            }
+            },
         ]
     },
     {
@@ -191,11 +191,9 @@ const promptsData = [
             },
         ]
     }
-];
-
-
-module.exports = promptsData;
 
     
 ]
+
+module.exports = promptsData;
 
