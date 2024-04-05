@@ -11,6 +11,10 @@ const gifSchema = new Schema(
             type: Number,
             required: true,
             default: 0
+        },
+        caption: {
+            type: String,
+            required: true
         }
     }
 )
