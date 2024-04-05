@@ -1,39 +1,33 @@
 import ReactDOM from 'react-dom/client'
-// Bringing in the required imports from 'react-router-dom' to set up application routing behavior
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import App from './App';
-import Error from './pages/Error';
-import Home from './pages/HomePage';
-import Game from './pages/Game';
-import Contact from './pages/Contact';
+import App from './App.jsx'
+import Homepage from './homepage/homepage.jsx';
+import GamePage from './gameplay/gameplay.jsx'
 
-// Define the accessible routes, and which components respond to which URL
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <Error />,
+    errorElement: <h1 className='display-2'>Wrong page!</h1>,
     children: [
       {
         index: true,
-        element: <Home />,
-      },
-      {
+        element: <Homepage />
+      }, {
         index: true,
-        element: <Game />,
-      },
-      {
-        path: '/Contact',
-        element: <Contact />,
-      },
-    ],
-  },
-]);
+        path: '/play',
+        element: <GamePage />
+      }, //{
+      //   index: true,
+      //   path: '/leaderboard',
+      //   element: <LeaderboardPage
+      // }
+    ]
+  }
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-);
-
+)

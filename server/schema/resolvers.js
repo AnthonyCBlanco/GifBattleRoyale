@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Prompt } = require('../models')
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -12,6 +12,22 @@ const resolvers = {
       
             throw AuthenticationError;
           },
+
+        prompt: async (parent, args) => {
+          const promptData = await Prompt.findById(args)
+          if(!promptData) {
+            console.error("Having trouble finding that prompt")
+            return
+          }
+          return promptData
+        },
+        leaderboard: async (parent, args) => {
+          const leaderboardData = await User
+          .find({})
+          .select({ "username": 1, "highscore": 1})
+          
+          return leaderboardData
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -37,8 +53,8 @@ const resolvers = {
           const token = signToken(user);
           return { token, user };
         },
-        addScore: async (parent, { score, email}) => {
-            const user = await User.findOneAndUpdate({ email }, {score: highscore});
+        addScore: async (parent, { score, username}) => {
+            const user = await User.findOneAndUpdate({ username }, {score: highscore});
             console.log(user)
             return(user)
         }
