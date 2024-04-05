@@ -4,19 +4,19 @@ const promptsData = [
         text: "You just got in a car accident. What is your reaction?",
         gifs: [
             {
-                url: "https://media1.tenor.com/m/47L_ZxE5nWoAAAAC/pay-me-rihanna.gif",
+                endpoint: "https://media1.tenor.com/m/47L_ZxE5nWoAAAAC/pay-me-rihanna.gif",
                 caption: "You better have insurance"
             },
             {
-                url: "https://media1.tenor.com/m/aFNnsa3vBEIAAAAd/crying-driving.gif",
+                endpoint: "https://media1.tenor.com/m/aFNnsa3vBEIAAAAd/crying-driving.gif",
                 caption: "I just got the car"
             },
             {
-                url: "https://media1.tenor.com/m/x9TVlnGxiJkAAAAC/kid-run.gif",
+                endpoint: "https://media1.tenor.com/m/x9TVlnGxiJkAAAAC/kid-run.gif",
                 caption: "RUN!... I don't have insurance"
             },
             {
-                url: "https://media1.tenor.com/m/JlVduOJbykoAAAAd/fix.gif",
+                endpoint: "https://media1.tenor.com/m/JlVduOJbykoAAAAd/fix.gif",
                 caption: "Try to fix it before your parents see"
     }
         ]
@@ -156,7 +156,7 @@ const promptsData = [
                 caption: "Anime"
             },
             {
-                endpoint: "https://tenor.com/view/jabbing-henry-danger-boxing-punches-virtual-gaming-gif-23581342",
+                endpoint: "https://media1.tenor.com/m/TT2JsPgGaK0AAAAC/jabbing-henry-danger.gif",
                 caption: "Playing a game"
             },
             {
