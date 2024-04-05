@@ -10,7 +10,7 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: true,
+      required: true, // @TODO: this is required here but not in your GraphQL user TypeDef. They should be consisten. 
       unique: true,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
