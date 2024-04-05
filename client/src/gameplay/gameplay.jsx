@@ -8,7 +8,7 @@ import { Chart } from "react-google-charts";
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
     const [promptIndex, setPromptIndex] = useState(0);
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false)
 
     const handleNextClick = () => {
         setPromptIndex(prevIndex => prevIndex + 1);
