@@ -11,6 +11,7 @@ const GamePage = () => {
     const [promptIndex, setPromptIndex] = useState(0);
     const [showPromptModal, setShowPromptModal] = useState(false);
     const [showChartModal, setShowChartModal] = useState(false);
+    
 
     const handleNextClick = () => {
         setPromptIndex(prevIndex => prevIndex + 1);
@@ -44,6 +45,7 @@ const GamePage = () => {
                     <Col key={index}>
                         <Button variant="dark">
                             <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
+                            <p>{gif.caption}</p>
                         </Button>
                     </Col>
                 ))}

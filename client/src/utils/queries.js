@@ -17,6 +17,7 @@ export const QUERY_PROMPT = gql`
     gifs {
       endpoint
       votes
+      caption
     }
   }
 }
