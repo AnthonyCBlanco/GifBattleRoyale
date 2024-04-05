@@ -35,9 +35,6 @@ const LoginForm = () => {
         variables: { ...userFormData },
       });
 
-      
-
-       
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
@@ -92,12 +89,10 @@ const LoginForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
+        disabled={!(userFormData.email && userFormData.password)}
+        type="submit"
+        style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text)' }}>Submit
+</Button>
       </Form>
     </>
   );

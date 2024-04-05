@@ -4,7 +4,7 @@
 .homepage {
   font-family: "Outfit", sans-serif;
   color: black; 
-  background-color: bisque;
+  background-color: var(--color-yellow);
   height: 100%;
   width: 100%;
 }

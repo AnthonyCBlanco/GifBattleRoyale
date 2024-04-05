@@ -7,7 +7,6 @@ import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
 
 const MainNavbar = () => {
-  // set modal display state
   const [showModal, setShowModal] = useState(false);
 
   return (
