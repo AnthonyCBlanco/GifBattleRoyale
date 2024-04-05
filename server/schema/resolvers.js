@@ -14,7 +14,7 @@ const resolvers = {
           },
 
         prompt: async (parent, args) => {
-          const promptData = await Prompt.findById(args)
+          const promptData = await Prompt.find()
           if(!promptData) {
             console.error("Having trouble finding that prompt")
             return
