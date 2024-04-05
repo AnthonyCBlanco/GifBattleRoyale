@@ -1,0 +1,19 @@
+@import '../vars.css';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.LeaderBoardPage {
+    font-family: "outfit", sans-serif;
+    color: black;
+    background-color: bisque;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+
+.thread {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-yellow);
+    
+}

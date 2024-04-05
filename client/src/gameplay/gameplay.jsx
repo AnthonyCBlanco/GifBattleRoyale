@@ -1,24 +1,27 @@
 import React, { useState } from "react";
-import './gameplay.css';
-import { Row, Col, Container, Button } from 'react-bootstrap'
+import { Row, Col, Container, Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
 import { QUERY_PROMPT } from "../utils/queries.js";
-import { useQuery } from "@apollo/client"
+import { useQuery } from "@apollo/client";
 import { Chart } from "react-google-charts";
 
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
     const [promptIndex, setPromptIndex] = useState(0);
+    const [show, setShow] = useState(false);
 
     const handleNextClick = () => {
-        // Logic to handle next prompt
         setPromptIndex(prevIndex => prevIndex + 1);
+        setShow(true);
     }
+
+    const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
-    const { prompt } = promptData // Get the current prompt
-    console.log(prompt)
+    const { prompt } = promptData;
 
     return (
         <Container>
@@ -30,33 +33,43 @@ const GamePage = () => {
 
             <Row>
                 <Col xs={6}>
-                    <p className="Prompt">{prompt[promptIndex].text}</p> {/* Render the current prompt */}
+                    <p className="Prompt">{prompt[promptIndex].text}</p>
                 </Col>
             </Row>
             
-            {/* Render buttons with GIFs */}
             <Row>
-                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[0].endpoint} alt="GIF 1" /></Button></Col>
-                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[1].endpoint}  alt="GIF 2" /></Button></Col>
-                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[2].endpoint}  alt="GIF 3" /></Button></Col>
-                <Col> <Button variant="dark"><img src={prompt[promptIndex].gifs[3].endpoint}  alt="GIF 4" /></Button></Col>
+                {prompt[promptIndex].gifs.map((gif, index) => (
+                    <Col key={index}>
+                        <Button variant="dark">
+                            <img src={gif.endpoint} alt={`GIF ${index + 1}`} />
+                        </Button>
+                    </Col>
+                ))}
             </Row>
             <br />
 
-            {/* Render Pie Chart */}
+            <Button variant="primary" onClick={handleNextClick}>Next</Button>
+
+            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal title</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    I will not close if you click outside me. Do not even try to press escape key.
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                    <Button variant="primary">Understood</Button>
+                </Modal.Footer>
+            </Modal>
+
             <Chart
                 chartType="PieChart"
-                data={[["Task", "Hours per Day"], ["Work", 11], ["Eat", 2], ["Commute", 2], ["Watch TV", 2], ["Sleep", 7]]} // Sample data, replace it with actual data
+                data={[["Task", "Hours per Day"], ["Work", 11], ["Eat", 2], ["Commute", 2], ["Watch TV", 2], ["Sleep", 7]]}
                 options={{ title: "My Daily Activities" }}
                 width={"100%"}
                 height={"400px"}
             />
-
-            {/* Next Button */}
-            <Row>
-                <Col><Button variant="dark" onClick={handleNextClick}>Next</Button></Col>
-                <Col></Col>
-            </Row>
         </Container>
     );
 }
