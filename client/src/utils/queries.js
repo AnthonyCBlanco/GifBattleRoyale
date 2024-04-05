@@ -8,13 +8,24 @@ export const QUERY_ME = gql`
       email
       highestScore 
     }
-    prompt {
-      text
-      gifs
-    }
-    leaderboards {
-      highestScore
-      username
-    }
   }
 `;
+export const QUERY_PROMPT = gql`
+{
+  prompt {
+    text
+    gifs {
+      endpoint
+      votes
+    }
+  }
+}
+`
+export const QUERY_LEADERBOARD = gql`
+{
+  leaderboards {
+    highestScore
+    username
+  }
+}
+`

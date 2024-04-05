@@ -26,7 +26,7 @@ const LoginForm = () => {
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
+      event.preventDefault(); // @TOOD: Remove unneccesary event.preventDefault
       event.stopPropagation();
     }
 
@@ -35,9 +35,6 @@ const LoginForm = () => {
         variables: { ...userFormData },
       });
 
-      
-
-       
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);

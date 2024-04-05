@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App.jsx'
 import Homepage from './homepage/homepage.jsx';
 import GamePage from './gameplay/gameplay.jsx'
+import LeaderBoardPage from './leaderboard/leaderboard.jsx'
+
+
 
 const router = createBrowserRouter([
   {
@@ -19,11 +22,11 @@ const router = createBrowserRouter([
         index: true,
         path: '/play',
         element: <GamePage />
-      }, //{
-      //   index: true,
-      //   path: '/leaderboard',
-      //   element: <LeaderboardPage
-      // }
+      }, {
+         index: true,
+        path: '/leaderboard',
+        element: <LeaderBoardPage />
+      }
     ]
   }
 ])
