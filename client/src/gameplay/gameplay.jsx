@@ -1,7 +1,15 @@
 import React from "react";
 import './gameplay.css';
 import { Row, Col, Container, Button } from 'react-bootstrap'
+import { QUERY_PROMPT } from "../utils/queries.js";
+import {useQuery} from "@apollo/client"
+
 function GamePage() {
+    const { loading, error, data } = useQuery(QUERY_PROMPT)
+
+    const prompt = data
+    console.log(error)
+    console.log(data)
     return (
         <Container>
             <Row>
