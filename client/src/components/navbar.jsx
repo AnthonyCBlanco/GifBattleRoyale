@@ -39,6 +39,7 @@ const MainNavbar = () => {
       </Navbar>
       {/* set modal data up */}
       <Modal
+      data-bs-theme="dark"
         size='lg'
         show={showModal}
         onHide={() => setShowModal(false)}
