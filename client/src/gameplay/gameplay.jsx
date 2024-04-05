@@ -72,7 +72,8 @@ const GamePage = () => {
                 <Modal.Body>
                     <Chart
                         chartType="PieChart"
-                        data={[["Task", "Hours per Day"], ["Gif1", 11], ["Gif2", 2], ["Gif3", 2], ["Gif4", 2]]}
+                        data={
+                            [["Task", "Hours per Day"], ["Gif1", prompt[promptIndex].gifs[0].votes], ["Gif2", prompt[promptIndex].gifs[1].votes], ["Gif3", prompt[promptIndex].gifs[2].votes], ["Gif4", prompt[promptIndex].gifs[3].votes]]}
                         options={{ title: "Competitors Scores" }}
                         width={"100%"}
                         height={"400px"}
