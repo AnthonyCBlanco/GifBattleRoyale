@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+import { Modal }from 'react-bootstrap';
 import { QUERY_PROMPT } from "../utils/queries.js";
 import { useQuery } from "@apollo/client";
 import { Chart } from "react-google-charts";
@@ -11,11 +11,20 @@ const GamePage = () => {
     const [promptIndex, setPromptIndex] = useState(0);
     const [showPromptModal, setShowPromptModal] = useState(false);
     const [showChartModal, setShowChartModal] = useState(false);
+
+    const [selectedGif, setSelectedGif] = useState(null)
     
 
     const handleNextClick = () => {
+        if(!selectedGif) return 
+           
         setPromptIndex(prevIndex => prevIndex + 1);
         setShowPromptModal(true);
+    }
+
+    const handleGifClick = (gifIndex) => {
+        console.log("gif clicked:", gifIndex)
+        setSelectedGif(gifIndex)
     }
 
     const handleClosePromptModal = () => setShowPromptModal(false);
@@ -43,7 +52,7 @@ const GamePage = () => {
             <Row>
                 {prompt[promptIndex].gifs.map((gif, index) => (
                     <Col key={index}>
-                        <Button variant="dark">
+                        <Button variant="dark" onClick={() => handleGifClick(index + 1)}>
                             <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
                             <p>{gif.caption}</p>
                         </Button>
