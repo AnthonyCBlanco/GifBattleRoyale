@@ -8,54 +8,36 @@ body, html {
 
 .homepage {
   font-family: "Outfit", sans-serif;
-  color: var(--color-grey); /* Updated for better contrast */
+  color: var(--color-grey); 
   background-color: var(--color-yellow);
   min-height: 100%;
   width: 100%;
-  padding: 20px; /* Added padding for spacing */
-  box-sizing: border-box; /* Ensures padding doesn't add to the width/height */
+  padding: 20px; 
+  box-sizing: border-box; 
 }
 
 .title {
-  font-size: 2.5rem; /* Responsive unit */
+  font-size: 2.5rem; 
   font-weight: 600;
-  margin: 0.5em 0; /* Added margin for spacing */
-}
-
-.navList {
-  display: flex; /* Replaced float with flex for better layout control */
-  justify-content: flex-end;
-  list-style: none;
-  padding: 0; /* Resets default padding */
-}
-
-.navItem, .logInBtn li {
-  color: var(--color-grey);
-  padding: 10px; /* Added padding for clickability */
-  cursor: pointer;
-}
-
-.navItem:hover, .logInBtn:hover {
-  background-color: var(--color-secondary);
-  color: var(--color-text);
+  margin: 0.5em 0; 
 }
 
 .heroSection, .gameDescription, .howToPlay {
   text-align: center;
-  padding: 20px 0; /* Added padding for spacing */
+  padding: 20px 0; 
 }
 
 .playNowBtn {
-  font-size: 1.75rem; /* Responsive unit */
+  font-size: 1.75rem; 
   padding: 10px 30px;
   background-color: var(--color-secondary);
   border: 2px solid var(--color-grey);
   border-radius: 31px;
   color: var(--color-text);
   text-transform: uppercase;
-  display: inline-block; /* Changed to inline-block for centering */
+  display: inline-block; 
   cursor: pointer;
-  text-decoration: none; /* Removes underline for links styled as buttons */
+  text-decoration: none;
 }
 
 /* Enhancements for Mobile Responsiveness */
@@ -66,7 +48,7 @@ body, html {
   }
 
   .navItem {
-    margin: 10px 0; /* Simplified margin for vertical spacing */
+    margin: 10px 0; 
     text-align: center;
     width: 100%;
   }

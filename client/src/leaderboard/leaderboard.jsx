@@ -4,8 +4,8 @@ import './leaderboard.css';
 
 function LeaderBoardPage() {
   return (
-    <div className="leaderBoardPage"> {/* Wrapper div with corrected class name */}
-      <Table striped bordered hover variant="dark"> {/* Optional: Add variant for Bootstrap styling */}
+    <div className="leaderBoardPage"> 
+      <Table striped bordered hover variant="dark"> 
         <thead>
           <tr>
             <th>#</th>

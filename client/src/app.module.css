@@ -11,11 +11,8 @@ html, body, #root {
     height: 100%;
   }
 
-  .navbar, .navbar-default {
-    background-color: var(--color-red) !important;
-  }
-
-  .bg-navbar {
-    background-image: linear-gradient(to bottom 
-  right,#7708ae,#6c0850,#b14861 )
-  }
+.html {
+  scroll-behavior: smooth;
+}
+  
+  

@@ -1,6 +1,6 @@
 @import '../vars.css';
 
-.leaderBoardPage { /* Corrected class name to match JSX */
+.leaderBoardPage {
   font-family: "Outfit", sans-serif;
   color: var(--color-text);
   background-color: var(--color-grey); 
@@ -26,6 +26,6 @@ tbody tr:hover {
 }
 
 td, th {
-  text-align: center; /* Center alignment of text in table cells */
-  padding: 12px; /* Adjust padding for spacing */
+  text-align: center; 
+  padding: 12px; 
 }

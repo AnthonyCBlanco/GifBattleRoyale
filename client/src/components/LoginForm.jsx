@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-// see SignupForm.js for comments
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
@@ -23,13 +21,6 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault(); // @TOOD: Remove unneccesary event.preventDefault
-      event.stopPropagation();
-    }
-
     try {
       const { data } = await login({
         variables: { ...userFormData },
@@ -50,17 +41,18 @@ const LoginForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="bg-dark p-3 rounded-3">
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+          variant="danger" // Bootstrap variant for red color
+          className="mb-3"
         >
           Something went wrong with your login credentials!
         </Alert>
         <Form.Group className='mb-3'>
-          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Label htmlFor="email" className="text-white">Email</Form.Label>
           <Form.Control
             type="text"
             placeholder="Your email"
@@ -68,14 +60,15 @@ const LoginForm = () => {
             onChange={handleInputChange}
             value={userFormData.email}
             required
+            className="bg-secondary text-white"
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid" className="text-white">
             Email is required!
           </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className='mb-3'>
-          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Label htmlFor="password" className="text-white">Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Your password"
@@ -83,16 +76,19 @@ const LoginForm = () => {
             onChange={handleInputChange}
             value={userFormData.password}
             required
+            className="bg-secondary text-white"
           />
-          <Form.Control.Feedback type="invalid">
+          <Form.Control.Feedback type="invalid" className="text-white">
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
         <Button
-        disabled={!(userFormData.email && userFormData.password)}
-        type="submit"
-        style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-text)' }}>Submit
-</Button>
+          disabled={!(userFormData.email && userFormData.password)}
+          type="submit"
+          variant="success" 
+        >
+          Submit
+        </Button>
       </Form>
     </>
   );
