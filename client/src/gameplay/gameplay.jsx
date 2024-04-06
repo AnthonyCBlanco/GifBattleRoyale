@@ -1,30 +1,31 @@
-import React from "react";
-import './gameplay.css';
-import { Row, Col, Container, Button } from 'react-bootstrap'
+import React, { useState } from "react";
+import { Row, Col, Container, Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
 import { QUERY_PROMPT } from "../utils/queries.js";
-import {useQuery} from "@apollo/client"
+import { useQuery } from "@apollo/client";
 import { Chart } from "react-google-charts";
+import './gameplay.css';
 
-export const data = [
-    ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7],
-  ];
+const GamePage = () => {
+    const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
+    const [promptIndex, setPromptIndex] = useState(0);
+    const [showPromptModal, setShowPromptModal] = useState(false);
+    const [showChartModal, setShowChartModal] = useState(false);
+    
 
-  export const options = {
-    title: "My Daily Activities",
-  };
+    const handleNextClick = () => {
+        setPromptIndex(prevIndex => prevIndex + 1);
+        setShowPromptModal(true);
+    }
 
+    const handleClosePromptModal = () => setShowPromptModal(false);
+    const handleCloseChartModal = () => setShowChartModal(false);
 
-function GamePage() {
-    const { loading, error, data } = useQuery(QUERY_PROMPT)
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-    const prompt = data
-    console.log(error)
-    console.log(data)
+    const { prompt } = promptData;
+
     return (
         <Container>
             <Row>
@@ -33,33 +34,59 @@ function GamePage() {
                 </Col>
             </Row>
 
-
             <Row>
                 <Col xs={6}>
-                    <p className="Prompt">You just got in a car accident. What is your reaction?</p>
+                    <p className="Prompt">{prompt[promptIndex].text}</p>
                 </Col>
             </Row>
+            
             <Row>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/b8gWCDKua2oAAAAd/side-eye.gif" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/47qpxBq_Tw0AAAAd/cat-cat-meme.gif" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" /></Button></Col>
-                <Col> <Button variant="dark"><img src="https://media1.tenor.com/m/Z0_epChCzkMAAAAC/cat-standing.gif" /></Button></Col>
+                {prompt[promptIndex].gifs.map((gif, index) => (
+                    <Col key={index}>
+                        <Button variant="dark">
+                            <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
+                            <p>{gif.caption}</p>
+                        </Button>
+                    </Col>
+                ))}
             </Row>
             <br />
 
-            <Chart
-                chartType="PieChart"
-                data={data}
-                options={options}
-                width={"100%"}
-                height={"400px"} />
+            <Button variant="primary" onClick={handleNextClick}>Next</Button>
 
-        <Row>
-                <Col><Button variant="dark">Next</Button></Col>
-                <Col></Col>
-            </Row>
+            <Modal show={showPromptModal} onHide={handleClosePromptModal} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>GIF BATTLE ROYALE</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Click the Show Chart button to see what competitors chose!!
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClosePromptModal}>Close</Button>
+                    <Button variant="primary" onClick={() => setShowChartModal(true)}>Show Chart</Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={showChartModal} onHide={handleCloseChartModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>GIF BATTLE ROYALE</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Chart
+                        chartType="PieChart"
+                        data={
+                            [["Task", "Hours per Day"], ["Gif1", prompt[promptIndex].gifs[0].votes], ["Gif2", prompt[promptIndex].gifs[1].votes], ["Gif3", prompt[promptIndex].gifs[2].votes], ["Gif4", prompt[promptIndex].gifs[3].votes]]}
+                        options={{ title: "Competitors Scores" }}
+                        width={"100%"}
+                        height={"400px"}
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseChartModal}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </Container>
-    )
+    );
 }
 
-export default GamePage
+export default GamePage;
