@@ -1,4 +1,3 @@
-import React from 'react';
 import './homepage.css';
 import MainNavbar from '../components/navbar';
 

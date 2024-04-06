@@ -1,19 +1,31 @@
 @import '../vars.css';
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-.LeaderBoardPage {
-    font-family: "outfit", sans-serif;
-    color: black;
-    background-color: bisque;
-    max-height: fit-content;
-    max-width: fit-content;
+.leaderBoardPage { /* Corrected class name to match JSX */
+  font-family: "Outfit", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-grey); 
+  padding: 150px;
+  border-radius: 8px; 
 }
 
-.thread {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--color-yellow);
-    
+table {
+  width: 100%; 
+  height: 100%;
+}
+
+thead {
+  color: var(--color-yellow); 
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--color-secondary); 
+}
+
+tbody tr:hover {
+  background-color: var(--color-red); 
+}
+
+td, th {
+  text-align: center; /* Center alignment of text in table cells */
+  padding: 12px; /* Adjust padding for spacing */
 }

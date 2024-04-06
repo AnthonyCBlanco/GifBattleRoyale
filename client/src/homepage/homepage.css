@@ -1,105 +1,73 @@
 @import '../vars.css';
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-.homepage {
-  font-family: "Outfit", sans-serif;
-  color: black; 
-  background-color: var(--color-yellow);
+body, html {
   height: 100%;
-  width: 100%;
+  margin: 0;
 }
 
-.navbar {
-  position: relative;
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
+.homepage {
+  font-family: "Outfit", sans-serif;
+  color: var(--color-grey); /* Updated for better contrast */
   background-color: var(--color-yellow);
-  color: var(--color-text);
-  padding: 0 10%;
+  min-height: 100%;
+  width: 100%;
+  padding: 20px; /* Added padding for spacing */
+  box-sizing: border-box; /* Ensures padding doesn't add to the width/height */
 }
 
 .title {
-  font-size: 50px;
+  font-size: 2.5rem; /* Responsive unit */
   font-weight: 600;
-  text-decoration: none;
-  text-align: center;
-  color: var(--color-grey);
+  margin: 0.5em 0; /* Added margin for spacing */
 }
 
 .navList {
-  float: right;
-  list-style: none; 
+  display: flex; /* Replaced float with flex for better layout control */
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0; /* Resets default padding */
 }
 
-.navList, .logInBtn li {
-  color:var(--color-grey);
+.navItem, .logInBtn li {
+  color: var(--color-grey);
+  padding: 10px; /* Added padding for clickability */
+  cursor: pointer;
+}
+
+.navItem:hover, .logInBtn:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .heroSection, .gameDescription, .howToPlay {
   text-align: center;
-}
-
-.heroSection h1 {
-  justify-content: center;
-  text-align: center;
-}
-
-.navItem {
-  margin-right: 20px; 
-  cursor: pointer; 
-}
-
-.navItem:hover { 
-  background-color: var(--color-secondary);
-  color: #fff; 
-}
-
-.logInBtn:hover {
-  background-color: var(--color-secondary);
-  color: #fff; 
+  padding: 20px 0; /* Added padding for spacing */
 }
 
 .playNowBtn {
-font-family: "Outfit", sans-serif;
-font-weight: 500;
-font-size: 28px;
-margin: 0 auto;
-color: #fff;
-background: var(--color-secondary);
-padding: 10px 30px;
-border: solid #323031 2px;
-box-shadow: none;
-border-radius: 31px;
-display: flex;
-flex-direction: row;
-justify-content: center;
-text-align: center;
-cursor: pointer;
-text-transform: uppercase;
+  font-size: 1.75rem; /* Responsive unit */
+  padding: 10px 30px;
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-grey);
+  border-radius: 31px;
+  color: var(--color-text);
+  text-transform: uppercase;
+  display: inline-block; /* Changed to inline-block for centering */
+  cursor: pointer;
+  text-decoration: none; /* Removes underline for links styled as buttons */
 }
 
-/* Media Queries for Mobile Responsiveness */
-
+/* Enhancements for Mobile Responsiveness */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center; 
-  }
-
   .navList {
-    width: 100%; 
-    display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
   }
 
   .navItem {
-    margin-right: 0; 
-    margin-bottom: 10px; 
-    text-align: center; 
-    width: 100%; 
+    margin: 10px 0; /* Simplified margin for vertical spacing */
+    text-align: center;
+    width: 100%;
   }
 }
-
-
