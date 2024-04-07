@@ -5,6 +5,7 @@ import { QUERY_PROMPT } from "../utils/queries.js";
 import { useQuery, useMutation } from "@apollo/client";
 import { Chart } from "react-google-charts";
 import './gameplay.css';
+import { ADD_VOTE } from "../utils/mutations.js";
 
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
@@ -12,8 +13,20 @@ const GamePage = () => {
     const [showPromptModal, setShowPromptModal] = useState(false);
     const [showChartModal, setShowChartModal] = useState(false);
     const [selectedGif, setSelectedGif] = useState(null)
+    const [addVote] = useMutation(ADD_VOTE)
+ 
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-    
+    const { prompt } = promptData;
+
+    const chartData = [
+        ["Gifs", "Votes Per Gif"],
+        ["Gif1", prompt[promptIndex].gifs[0].votes],
+        ["Gif2", prompt[promptIndex].gifs[1].votes],
+        ["Gif3", prompt[promptIndex].gifs[2].votes],
+        ["Gif4", prompt[promptIndex].gifs[3].votes]
+    ]
 
     const handleNextClick = () => {
         if(!selectedGif) return 
@@ -21,7 +34,12 @@ const GamePage = () => {
         setPromptIndex(prevIndex => prevIndex + 1);
         setShowPromptModal(true);
 
-
+        addVote({
+            variables: {
+                promptText: prompt[promptIndex].text,
+                gifIndex: selectedGif - 1
+            }
+        }).then(res => console.log(res))
     }
 
     const handleGifClick = (gifIndex) => {
@@ -32,11 +50,7 @@ const GamePage = () => {
 
     const handleClosePromptModal = () => setShowPromptModal(false);
     const handleCloseChartModal = () => setShowChartModal(false);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-
-    const { prompt } = promptData;
+    
 
     return (
         <Container>
@@ -86,8 +100,7 @@ const GamePage = () => {
                 <Modal.Body>
                     <Chart
                         chartType="PieChart"
-                        data={
-                            [["Task", "Hours per Day"], ["Gif1", prompt[promptIndex].gifs[0].votes], ["Gif2", prompt[promptIndex].gifs[1].votes], ["Gif3", prompt[promptIndex].gifs[2].votes], ["Gif4", prompt[promptIndex].gifs[3].votes]]}
+                        data={chartData}
                         options={{ title: "Competitors Scores" }}
                         width={"100%"}
                         height={"400px"}
