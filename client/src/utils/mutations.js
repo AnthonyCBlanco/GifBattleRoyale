@@ -36,3 +36,17 @@ export const ADD_SCORE = gql`
     }
   }
 `;
+
+export const ADD_VOTE = gql`
+mutation addVote($promptText: String!, $gifIndex: Int!) {
+  addVote(promptText: $promptText, gifIndex: $gifIndex) {
+    _id
+    text
+    gifs {
+      endpoint
+      caption
+      votes
+    }
+  }
+}
+`
