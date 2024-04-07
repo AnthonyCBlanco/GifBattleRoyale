@@ -101,7 +101,12 @@ const GamePage = () => {
                     <Chart
                         chartType="PieChart"
                         data={chartData}
-                        options={{ title: "Competitors Scores" }}
+                        options={{
+                            title: "My Daily Activities",
+                            pieHole: 0.4,
+                            is3D: false,
+                        }}
+                        loader={<div>Loading Data...</div>}
                         width={"100%"}
                         height={"400px"}
                     />
