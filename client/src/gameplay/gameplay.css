@@ -1,9 +1,79 @@
-img{
-    max-height: 200px;
-    aspect-ratio: 1/1;
+/* Base styles to ensure consistency */
+body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Outfit', sans-serif !important;
 }
 
-button{ 
-     min-width: 226px;
-     min-height: 214;
+.gameContainer {
+    width: 90% !important;
+    max-width: 800px !important;
+    margin: auto !important;
+    padding: 2rem !important;
+    text-align: center !important;
+}
+
+.title {
+    font-size: 1.5rem !important;
+    color: #FF1744 !important; 
+    margin-bottom: 1rem !important;
+}
+
+.prompt {
+    font-size: 2rem !important;
+    margin: 2rem auto 3rem !important;
+    color: #76FF03 !important;
+}
+
+.gifGrid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns */
+    gap: 1rem !important;
+    justify-content: center !important;
+    margin-bottom: 2rem !important; /* Extra space before the Next button */
+}
+
+.gifButton {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background-color: #263238 !important;
+    border: none !important;
+    padding: 0.5rem !important;
+    border-radius: 0.5rem !important;
+}
+
+.gifButton:hover {
+    transform: scale(1.05) !important;
+}
+
+.gifBox {
+    width: 100% !important;
+    border-radius: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.gifButton p {
+    color: #B2DFDB !important;
+    font-size: 0.9rem !important;
+}
+
+.nextButton {
+    background-color: #4CAF50 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 0.5rem !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+}
+
+.nextButton:hover {
+    background-color: #388E3C !important;
+}
+
+.modal-content, .modal-header, .modal-body, .modal-footer {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #37474F !important;
 }
