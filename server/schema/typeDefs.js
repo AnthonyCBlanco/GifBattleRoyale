@@ -28,6 +28,7 @@ const typeDefs = `
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addScore(email: String!, score: Int): User
+        addVote(promptText: String!, gifIndex: Int!): Prompt
       }
 
     type Query {
