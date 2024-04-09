@@ -190,10 +190,53 @@ const promptsData = [
                 
             },
         ]
-    }
+    },
+            {
+                text: "Your bestfriend friends is being rude to them. What do you do?",
+                gifs: [
+                    {
+                        endpoint: "https://media1.tenor.com/m/7YhYYvrO4TgAAAAC/boxing-break.gif",
+                        caption: "Break it up"
+                    },
+                    {
+                        endpoint: "https://media1.tenor.com/m/KwWNpWfsx3MAAAAd/square-up.gif",
+                        caption: "Take up for your friend??"
+                    },
+                    {
+                        endpoint: "https://media1.tenor.com/m/xHAPQG4dMvMAAAAC/cats-fight.gif",
+                        caption: "Call for help"
+                    },
+                    {
+                        endpoint: "https://media1.tenor.com/m/oL-9bcUv9wcAAAAC/are-you-done-mbaku.gif",
+                        caption: "Let them fight"
+                        
+                    },
+                ]
+            },
+                    {
+                text: "If you had one wish, how would you use it?",
+                gifs: [
+                    {
+                        endpoint: "https://media1.tenor.com/m/YlBfgZ3_INcAAAAd/cat-kitty.gif",
+                        caption: "I want to be rich!"
+                    },
+                    {
+                        endpoint: "https://media1.tenor.com/m/ouGypp7Z3iwAAAAd/omg-cat-omg.gif",
+                        caption: "Super powers "
+                    },
+                    {
+                        endpoint: "https://media1.tenor.com/m/f7DysRwHzREAAAAC/ms-foxy-hello.gif",
+                        caption: "I wish you would!"
+                    },
+                    {
+                        endpoint: "https://media1.tenor.com/m/HnEO0phtFbsAAAAd/one-wish-ray-j-rain-one-wish.gif",
+                        caption: "Love"
+                        
+                    }
 
-    
-]
+        ]
+    },
+
+];
 
 module.exports = promptsData;
-

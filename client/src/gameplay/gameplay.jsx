@@ -1,56 +1,37 @@
 import { useState } from "react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
-import { Modal }from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
 import { QUERY_PROMPT } from "../utils/queries.js";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Chart } from "react-google-charts";
 import './gameplay.css';
-import { ADD_VOTE } from "../utils/mutations.js";
 
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
     const [promptIndex, setPromptIndex] = useState(0);
     const [showPromptModal, setShowPromptModal] = useState(false);
     const [showChartModal, setShowChartModal] = useState(false);
-    const [selectedGif, setSelectedGif] = useState(null)
-    const [addVote] = useMutation(ADD_VOTE)
- 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-
-    const { prompt } = promptData;
-
-    const chartData = [
-        ["Gifs", "Votes Per Gif"],
-        ["Gif1", prompt[promptIndex].gifs[0].votes],
-        ["Gif2", prompt[promptIndex].gifs[1].votes],
-        ["Gif3", prompt[promptIndex].gifs[2].votes],
-        ["Gif4", prompt[promptIndex].gifs[3].votes]
-    ]
+    
 
     const handleNextClick = () => {
-        if(!selectedGif) return 
-           
         setPromptIndex(prevIndex => prevIndex + 1);
         setShowPromptModal(true);
-
-        addVote({
-            variables: {
-                promptText: prompt[promptIndex].text,
-                gifIndex: selectedGif - 1
-            }
-        }).then(res => console.log(res))
-    }
-
-    const handleGifClick = (gifIndex) => {
-        console.log("gif clicked:", gifIndex)
-        setSelectedGif(gifIndex)
-        
     }
 
     const handleClosePromptModal = () => setShowPromptModal(false);
     const handleCloseChartModal = () => setShowChartModal(false);
-    
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+  
+
+    const { prompt } = promptData;
+
+       // Redirect to EndPage when game is over
+       if (promptIndex >= prompt.length) {
+        window.location.href = "/endpage";
+    }
+
 
     return (
         <Container>
@@ -69,7 +50,7 @@ const GamePage = () => {
             <Row>
                 {prompt[promptIndex].gifs.map((gif, index) => (
                     <Col key={index}>
-                        <Button variant="dark" onClick={() => handleGifClick(index + 1)}>
+                        <Button variant="dark">
                             <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
                             <p>{gif.caption}</p>
                         </Button>
@@ -100,13 +81,9 @@ const GamePage = () => {
                 <Modal.Body>
                     <Chart
                         chartType="PieChart"
-                        data={chartData}
-                        options={{
-                            title: "My Daily Activities",
-                            pieHole: 0.4,
-                            is3D: false,
-                        }}
-                        loader={<div>Loading Data...</div>}
+                        data={
+                            [["Task", "Hours per Day"], ["Gif1", prompt[promptIndex].gifs[0].votes], ["Gif2", prompt[promptIndex].gifs[1].votes], ["Gif3", prompt[promptIndex].gifs[2].votes], ["Gif4", prompt[promptIndex].gifs[3].votes]]}
+                        options={{ title: "Competitors Scores" }}
                         width={"100%"}
                         height={"400px"}
                     />
