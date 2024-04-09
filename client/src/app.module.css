@@ -1,9 +1,18 @@
 @import "./vars.css";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+html, body, #root {
+  height: 100vh;
+  background-color: var(--color-yellow);
+}
 
 .App {
-    background-color: var(--color-primary);
     width: 100%;
     height: 100%;
   }
+
+.html {
+  scroll-behavior: smooth;
+}
+  
+  

@@ -1,40 +1,42 @@
-import React from 'react';
-import Table from 'react-bootstrap/Table';
-import './leaderboard.css';
+import React, { useState } from "react";
+import Table from "react-bootstrap/Table";
+import "./leaderboard.css";
 
+const LeaderBoardPage = ({ users, isAuthenticated }) => {
+  // Define state to hold user data
+  const [leaderboardUsers, setLeaderboardUsers] = useState(users);
 
-function LeaderBoardPage() {
+  // Function to add a new user to the leaderboard
+  const addUserToLeaderboard = (userData) => {
+    if (isAuthenticated) {
+      setLeaderboardUsers((prevUsers) => [...prevUsers, userData]);
+    } else {
+      alert("You must be signed in to submit your score.");
+    }
+  };
+
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
-}
+    <div className="leaderBoardPage">
+      <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
 
-export default LeaderBoardPage
+          {leaderboardUsers &&
+            leaderboardUsers.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.username}</td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
+    </div>
+  );
+};
+
+export default LeaderBoardPage;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { Modal }from 'react-bootstrap';
 import { QUERY_PROMPT } from "../utils/queries.js";

@@ -1,6 +1,7 @@
 import React from 'react';
-import './homepage.css';
+import { Link } from 'react-router-dom'; // Import Link component
 import MainNavbar from '../components/navbar';
+import './homepage.css';
 
 function HomePage() {
   return (
@@ -9,7 +10,8 @@ function HomePage() {
 
       <section className="heroSection">
         <h1>The ultimate challenge of choosing the most popular GIFs. Ready to test your intuition?</h1>
-        <button className="playNowBtn" href='/play'>Play Now</button>
+        {/* Change button to Link */}
+        <Link to="/play" className="playNowBtn">Play Now</Link>
       </section>
 
       <section className="gameDescription">
