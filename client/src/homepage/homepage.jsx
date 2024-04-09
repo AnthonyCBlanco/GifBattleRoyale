@@ -16,7 +16,7 @@ function HomePage() {
 
       <section className="gameDescription">
         <h2>What is GIF Battle?</h2>
-        <p>GIF Battle is a game where you select the most popular GIFs based on different fun and engaging scenarios. Whether you're guessing which GIF best fits a hilarious moment or which reaction GIF will be the crowd favorite, GIF Battle offers endless entertainment and competition.</p>
+        <p> GIF Battle is a game where you select the most popular GIFs based on different fun and engaging scenarios. Whether you're guessing which GIF best fits a hilarious moment or which reaction GIF will be the crowd favorite, GIF Battle offers endless entertainment and competition.</p>
       </section>
 
       <section className="howToPlay">
