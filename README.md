@@ -1,11 +1,44 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  # Gif Battle Royale
 
-Currently, two official plugins are available:
+  ## Table of Contents
+  - [Description](#project-description)
+  - [ScreenShot](#screenshot)
+  - [Licensing](#licensing)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [Questions](#questions)
 
 
-# TODO: Please add high-quality instructions that each of your group members can use to run this project in dev mode. Please include instructions for telling members to git pull, npm install, and then the commands for running your project
+  ## Project Description
+  Gif Battle Royale is an all new way to play gif propmt challenger that users will be able to see and use their favorite silly pictures.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  ## ScreenShot 
+![Alt text](<Screenshot 2024-04-08 at 8.17.08 PM.png>)
+  
+  ### Licensing 
+  
+  [![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/.)
+
+  ## Installation 
+  How to install ???
+  1. clone repo `$ git clone https://github.com/AnthonyCBlanco/GifBattleRoyale`
+  2. `npm install`
+  3. `npm run seed`
+  4. `npm run develop`
+
+  ## Usage 
+  use `npm install` to download packages. 
+  use `npm run seed` to use seed data  
+  use `npm run develop` to see local port 
+
+  ## Contribution
+  1. [AnthonyCBlanco](https://github.com/AnthonyCBlanco)
+  2. [Gblow](https://github.com/gblow)
+  3. [marialwj](https://github.com/marialwj)
+  4. [EdwardBecerra2](https://github.com/EdwardBecerra2)
+
+  ## Questions 
+  For any questions please reach out to [AnthonyCBlanco](https://github.com/AnthonyCBlanco), [Gblow](https://github.com/gblow), [marialwj](https://github.com/marialwj), [EdwardBecerra2](https://github.com/EdwardBecerra2)
+  
