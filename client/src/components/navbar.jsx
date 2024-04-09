@@ -30,7 +30,7 @@ const MainNavbar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
+      
       <Modal
         show={showModal}
         onHide={() => setShowModal(false)}

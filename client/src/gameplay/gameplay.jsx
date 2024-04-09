@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
-import { Modal }from 'react-bootstrap';
 import { QUERY_PROMPT } from "../utils/queries.js";
 import { useQuery, useMutation } from "@apollo/client";
-import { Chart } from "react-google-charts";
 import './gameplay.css';
 import { ADD_VOTE } from "../utils/mutations.js";
 
@@ -12,6 +10,7 @@ const GamePage = () => {
     const [promptIndex, setPromptIndex] = useState(0);
     const [selectedGif, setSelectedGif] = useState(null)
     const [addVote] = useMutation(ADD_VOTE)
+    const [isSubmitted, SubmitAnswer] = useState(false)
  
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -19,7 +18,7 @@ const GamePage = () => {
     const { prompt } = promptData;
 
     const handleNextClick = () => {
-        if(!selectedGif) return 
+        if(!isSubmitted) return 
            
         setPromptIndex(prevIndex => prevIndex + 1);
        
@@ -46,6 +45,7 @@ const GamePage = () => {
                 gifIndex: selectedGif - 1
             }
         }).then(res => console.log(res))
+        SubmitAnswer(true)
     }
 
     return (
@@ -65,10 +65,15 @@ const GamePage = () => {
             <Row>
                 {prompt[promptIndex].gifs.map((gif, index) => (
                     <Col key={index}>
-                        <Button variant="dark" onClick={() => handleGifClick(index + 1)}>
+                        <Button variant="dark" onClick={() => handleGifClick(index + 1)} className={index+1 === selectedGif ? "gifSelected gidButton": "gifButton"}>
                             <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
                             <p>{gif.caption}</p>
-                        </Button>
+                            
+                              
+                        </Button>     
+                        {isSubmitted && (
+                                <p>{gif.votes/0.25}% </p>
+                            )}
                     </Col>
                 ))}
             </Row>

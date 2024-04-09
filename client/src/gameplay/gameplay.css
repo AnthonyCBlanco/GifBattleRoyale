@@ -55,6 +55,10 @@ body, html {
     
 
 }
+.gifSelected {
+    transform: scale(1.10) !important;
+}
+
 
 .gifButton p {
     color: #B2DFDB !important;
@@ -80,3 +84,4 @@ body, html {
     color: #ffffff !important;
     border-color: #37474F !important;
 }
+
