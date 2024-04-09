@@ -28,7 +28,14 @@ function HomePage() {
           <li>Compete with others on the leaderboard by playing more and earning points.</li>
         </ol>
       </section>
+      <footer className="footer">
+      <div className="container">
+        <span className="text-muted">© {new Date().getFullYear()} GifBattleRoyale. All rights reserved.</span>
+      </div>
+    </footer>
+
     </div>
+    
   );
 }
 

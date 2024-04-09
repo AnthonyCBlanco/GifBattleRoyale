@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.navbar-custom {
+  background-color: var(--color-primary)!important; 
+  border-bottom: 3px solid var(--color-secondary); 
+  font-family: "Outfit", sans-serif;
+}
+
+.navbar-brand-custom {
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: var(--color-text)!important; 
+}
+
+.nav-link-custom {
+  color: var(--color-text)!important; 
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link-custom:hover, .nav-link-custom:focus {
+  color: var(--color-secondary)!important; 
+  text-decoration: none;
+}
+
