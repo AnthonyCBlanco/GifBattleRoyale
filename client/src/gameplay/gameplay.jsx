@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { QUERY_PROMPT } from "../utils/queries.js";
+import { ADD_VOTE } from "../utils/mutations.js";
 import { useQuery, useMutation } from "@apollo/client";
 import './gameplay.css';
-import { ADD_VOTE } from "../utils/mutations.js";
 
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
@@ -11,6 +11,11 @@ const GamePage = () => {
     const [selectedGif, setSelectedGif] = useState(null)
     const [addVote] = useMutation(ADD_VOTE)
     const [isSubmitted, SubmitAnswer] = useState(false)
+    const [userScore, setUserScore] = useState(0);
+
+    useEffect(() => {
+        SubmitAnswer(false);
+    }, [promptIndex]);
  
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -19,8 +24,12 @@ const GamePage = () => {
 
     const handleNextClick = () => {
         if(!isSubmitted) return 
-           
+        
         setPromptIndex(prevIndex => prevIndex + 1);
+
+        if(promptIndex > prompt.length){
+            window.location.href = "/endpage"
+        }
        
         addVote({
             variables: {
@@ -37,14 +46,22 @@ const GamePage = () => {
     }
 
     const handleSubmitClick = () =>{
-        if(!selectedGif) return
+        if(!selectedGif || isSubmitted) return
+        console.log("vote submitted")
 
         addVote({
             variables: {
                 promptText: prompt[promptIndex].text,
                 gifIndex: selectedGif - 1
             }
-        }).then(res => console.log(res))
+        }).then(() => {
+            const selectedGifVotes = prompt[promptIndex].gifs[selectedGif - 1].votes;
+            const maxVotes = Math.max(...prompt[promptIndex].gifs.map(gif => gif.votes));
+            if (selectedGifVotes === maxVotes) {
+                setUserScore(prevScore => prevScore + 1);
+            }
+        });
+
         SubmitAnswer(true)
     }
 
@@ -65,11 +82,9 @@ const GamePage = () => {
             <Row>
                 {prompt[promptIndex].gifs.map((gif, index) => (
                     <Col key={index}>
-                        <Button variant="dark" onClick={() => handleGifClick(index + 1)} className={index+1 === selectedGif ? "gifSelected gidButton": "gifButton"}>
+                        <Button variant="dark" onClick={() => handleGifClick(index + 1)} className={index+1 === selectedGif ? "gifSelected gifButton": "gifButton"}>
                             <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
-                            <p>{gif.caption}</p>
-                            
-                              
+                            <p>{gif.caption}</p>    
                         </Button>     
                         {isSubmitted && (
                                 <p>{gif.votes/0.25}% </p>
@@ -78,10 +93,9 @@ const GamePage = () => {
                 ))}
             </Row>
             <br />
-
             <Button variant="primary" onClick={handleSubmitClick}>Submit</Button>
             <Button variant="secondary" onClick={handleNextClick}>Next</Button>
-
+            <p>User's Score: {userScore}</p>
         </Container>
     );
 }
