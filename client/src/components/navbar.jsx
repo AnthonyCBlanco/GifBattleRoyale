@@ -3,28 +3,29 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
-
 import Auth from '../utils/auth';
+
+import './navbarstyles.css'; 
 
 const MainNavbar = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <Navbar bg="danger" expand="lg" variant="dark">
+      <Navbar expand="lg" variant="dark" className="navbar-custom">
         <Container fluid>
-          <Navbar.Brand as={Link} to="/">GifBattleRoyale</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className="navbar-brand-custom">GifBattleRoyale</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link as={Link} to="/leaderboard">Leaderboard</Nav.Link>
+              <Nav.Link as={Link} to="/leaderboard" className="nav-link-custom">Leaderboard</Nav.Link>
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to="/play">Play!</Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link as={Link} to="/play" className="nav-link-custom">Play!</Nav.Link>
+                  <Nav.Link onClick={Auth.logout} className="nav-link-custom">Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link onClick={() => setShowModal(true)} className="nav-link-custom">Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
