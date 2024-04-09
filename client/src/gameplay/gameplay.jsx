@@ -10,8 +10,6 @@ import { ADD_VOTE } from "../utils/mutations.js";
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
     const [promptIndex, setPromptIndex] = useState(0);
-    const [showPromptModal, setShowPromptModal] = useState(false);
-    const [showChartModal, setShowChartModal] = useState(false);
     const [selectedGif, setSelectedGif] = useState(null)
     const [addVote] = useMutation(ADD_VOTE)
  
@@ -20,20 +18,11 @@ const GamePage = () => {
 
     const { prompt } = promptData;
 
-    const chartData = [
-        ["Gifs", "Votes Per Gif"],
-        ["Gif1", prompt[promptIndex].gifs[0].votes],
-        ["Gif2", prompt[promptIndex].gifs[1].votes],
-        ["Gif3", prompt[promptIndex].gifs[2].votes],
-        ["Gif4", prompt[promptIndex].gifs[3].votes]
-    ]
-
     const handleNextClick = () => {
         if(!selectedGif) return 
            
         setPromptIndex(prevIndex => prevIndex + 1);
-        setShowPromptModal(true);
-
+       
         addVote({
             variables: {
                 promptText: prompt[promptIndex].text,
@@ -48,9 +37,16 @@ const GamePage = () => {
         
     }
 
-    const handleClosePromptModal = () => setShowPromptModal(false);
-    const handleCloseChartModal = () => setShowChartModal(false);
-    
+    const handleSubmitClick = () =>{
+        if(!selectedGif) return
+
+        addVote({
+            variables: {
+                promptText: prompt[promptIndex].text,
+                gifIndex: selectedGif - 1
+            }
+        }).then(res => console.log(res))
+    }
 
     return (
         <Container>
@@ -78,43 +74,9 @@ const GamePage = () => {
             </Row>
             <br />
 
-            <Button variant="primary" onClick={handleNextClick}>Next</Button>
+            <Button variant="primary" onClick={handleSubmitClick}>Submit</Button>
+            <Button variant="secondary" onClick={handleNextClick}>Next</Button>
 
-            <Modal show={showPromptModal} onHide={handleClosePromptModal} backdrop="static" keyboard={false}>
-                <Modal.Header closeButton>
-                    <Modal.Title>GIF BATTLE ROYALE</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Click the Show Chart button to see what competitors chose!!
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClosePromptModal}>Close</Button>
-                    <Button variant="primary" onClick={() => setShowChartModal(true)}>Show Chart</Button>
-                </Modal.Footer>
-            </Modal>
-
-            <Modal show={showChartModal} onHide={handleCloseChartModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>GIF BATTLE ROYALE</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Chart
-                        chartType="PieChart"
-                        data={chartData}
-                        options={{
-                            title: "My Daily Activities",
-                            pieHole: 0.4,
-                            is3D: false,
-                        }}
-                        loader={<div>Loading Data...</div>}
-                        width={"100%"}
-                        height={"400px"}
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseChartModal}>Close</Button>
-                </Modal.Footer>
-            </Modal>
         </Container>
     );
 }
