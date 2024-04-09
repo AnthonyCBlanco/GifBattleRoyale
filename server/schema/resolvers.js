@@ -54,10 +54,21 @@ const resolvers = {
           return { token, user };
         },
         addScore: async (parent, { score, username}) => {
-            const user = await User.findOneAndUpdate({ username }, {score: highscore});
-            console.log(user)
+            const user = await User.findOneAndUpdate({ username }, {highscore: score});
             return(user)
+        },
+        addVote : async (parent, { promptText, gifIndex}) => {
+          const prompt = await Prompt.findOne({ text: promptText });
+
+          if (gifIndex < 0 || gifIndex >= prompt.gifs.length) {
+            throw new Error("Invalid GIF index");
+          }
+          prompt.gifs[gifIndex].votes++;
+          await prompt.save();
+
+          return(prompt)
         }
+      
     },
 }
 
