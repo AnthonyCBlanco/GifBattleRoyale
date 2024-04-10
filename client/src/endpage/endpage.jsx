@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
+import { QUERY_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 

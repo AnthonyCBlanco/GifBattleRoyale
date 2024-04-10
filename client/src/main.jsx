@@ -14,9 +14,8 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1 className='display-5'>Your game has ended. Please come back tomorrow to play again!
-    <img src="https://media1.tenor.com/m/t2oF_ayMhg0AAAAd/try-again-tomorrow-mr-miyagi.gif" class="rounded mx-auto d-block" alt="Come Back tomorrow"></img>
-    </h1>,
+    errorElement: <h1 className='display-2'>Error</h1>,
+
     children: [
       {
         index: true,
