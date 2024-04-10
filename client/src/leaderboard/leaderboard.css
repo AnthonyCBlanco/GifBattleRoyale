@@ -3,7 +3,6 @@
 .leaderboard-page {
   font-family: "Outfit", sans-serif;
   background-color: var(--color-background); 
-  color: var(--color-text);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -96,7 +95,6 @@
 :root {
   --color-background: #a7a56a;
   --color-light: #ffffff;
-  --color-text: #333333;
   --color-primary: #005f73;
   --color-accent: #0a9396;
   --color-border: #e0e0e0;
