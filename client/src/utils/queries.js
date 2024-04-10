@@ -6,7 +6,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      highestScore 
+      highScore 
     }
   }
 `;
@@ -24,8 +24,8 @@ export const QUERY_PROMPT = gql`
 `
 export const QUERY_LEADERBOARD = gql`
 {
-  leaderboards {
-    highestScore
+  leaderboard {
+    highScore
     username
   }
 }
