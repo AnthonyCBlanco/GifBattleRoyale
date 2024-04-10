@@ -53,7 +53,7 @@ body {
     border: 3px solid var(--color-secondary);
     border-radius: var(--border-radius);
     padding: 1rem;
-    flex: 0 1 calc(33% - 1rem); /* three items per row, accounting for the gap */
+    flex: 0 1 calc(33% - 1rem); 
     box-shadow: var(--box-shadow);
     transition: transform 0.3s, border-color 0.3s;
 }
@@ -105,16 +105,20 @@ button:hover {
     color: var(--color-primary);
 }
 
+.resultPercentage {
+    color: #f4f4f4;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .gifButton {
-        flex: 0 1 calc(50% - 1rem); /* two items per row */
+        flex: 0 1 calc(50% - 1rem); 
     }
 }
 
 @media (max-width: 480px) {
     .gifButton {
-        flex: 0 1 100%; /* one item per row */
+        flex: 0 1 100%; 
     }
     
     .gameContainer {
