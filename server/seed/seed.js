@@ -10,7 +10,6 @@ mongoose.connect('mongodb://localhost:27017/GifBattleRoyale', {
 async function seedDatabase() {
 
     try {
-        await Prompt.deleteMany()
 
         await Prompt.create(promptData)
     } catch (err) {
