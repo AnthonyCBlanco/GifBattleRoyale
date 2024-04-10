@@ -83,38 +83,36 @@ const GamePage = () => {
     }
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <h1 className="Title"> User must pick Gif that matches best with Prompt!! </h1>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col xs={6}>
-                    <p className="Prompt">{prompt[promptIndex].text}</p>
-                </Col>
-            </Row>
+        <div className="gameContainer">
+            <div className="title">Pick the Best Matching GIF!</div>
+            <div className="prompt">{prompt[promptIndex].text}</div>
             
-            <Row>
+            <div className="gifGrid">
                 {prompt[promptIndex].gifs.map((gif, index) => (
-                    <Col key={index}>
-                        <Button variant="dark" onClick={() => handleGifClick(index + 1)} className={index+1 === selectedGif ? "gifSelected gifButton": "gifButton"}>
-                            <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
-                            <p>{gif.caption}</p>    
-                        </Button>     
-                        {isSubmitted && (
-                                <p>{gif.votes/0.25}% </p>
-                            )}
-                    </Col>
+                    <div key={index} className={`gifButton ${index + 1 === selectedGif ? "gifSelected" : ""}`} onClick={() => handleGifClick(index + 1)}>
+                        <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
+                        <div className="gifCaption">{gif.caption}</div>    
+                    </div>
                 ))}
-            </Row>
-            <br />
-            <Button variant="primary" onClick={handleSubmitClick}>Submit</Button>
-            <Button variant="secondary" onClick={handleNextClick}>Next</Button>
-            <p>User's Score: {userScore}</p>
-        </Container>
+            </div>
+            
+            {isSubmitted && (
+                <div className="results">
+                    {prompt[promptIndex].gifs.map((gif, index) => (
+                        <div key={index} className="resultPercentage">
+                            {gif.votes / 0.25}%
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            <div className="buttons">
+                <button className="submit" onClick={handleSubmitClick}>Submit</button>
+                <button className="next" onClick={handleNextClick}>Next</button>
+            </div>
+            <div className="userScore">User's Score: {userScore}</div>
+        </div>
     );
-}
+};
 
 export default GamePage;

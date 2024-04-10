@@ -24,8 +24,8 @@ export const QUERY_PROMPT = gql`
 `
 export const QUERY_LEADERBOARD = gql`
 {
-  leaderboards {
-    highestScore
+  leaderboard {
+    highScore
     username
   }
 }
