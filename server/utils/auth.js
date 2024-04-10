@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { GraphQLError } = require('graphql');
+require('dotenv').config()
 // set token secret and expiration date
-const secret = process.env.JWT_SECRET // @TODO: Pull this from process.ENV.JWT_SECRET
+const secret = process.env.JWT_SECRET 
 const expiration = '2h';
 module.exports = {
   AuthenticationError: new GraphQLError('Could not authenticate user.', {
