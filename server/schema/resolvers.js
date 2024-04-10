@@ -25,7 +25,7 @@ const resolvers = {
         },
         leaderboard: async (parent, args) => {
           try{
-            const leaderboardData = await User.find()
+            const leaderboardData = await User.find().sort({ score: -1 });
             return leaderboardData
           } catch(err){
             console.log(err)
