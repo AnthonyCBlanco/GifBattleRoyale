@@ -3,7 +3,7 @@ const typeDefs = `
         _id: ID!
         username: String!
         email: String!
-        highScore: Int!
+        highscore: Int
     }
 
     type Prompt {
@@ -34,7 +34,7 @@ const typeDefs = `
     type Query {
         me: User
         prompt: [Prompt]
-        leaderboard: User
+        leaderboard: [User]
     }
 `
 

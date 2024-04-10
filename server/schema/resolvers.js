@@ -24,11 +24,13 @@ const resolvers = {
           return promptData
         },
         leaderboard: async (parent, args) => {
-          const leaderboardData = await User
-          .find({})
-          .select({ "username": 1, "highscore": 1})
-          
-          return leaderboardData
+          try{
+            const leaderboardData = await User.find()
+            return leaderboardData
+          } catch(err){
+            console.log(err)
+            return err
+          }
         }
     },
     Mutation: {

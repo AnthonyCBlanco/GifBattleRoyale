@@ -1,51 +1,18 @@
-// import React from 'react';
-// import { Container, Table } from 'react-bootstrap';
-// import { useQuery } from '@apollo/client';
-// import { QUERY_LEADERBOARD } from '../utils/queries';
-
-// const LeaderboardPage = () => {
-//   const { loading, data, error } = useQuery(QUERY_LEADERBOARD);
-
-//   if (loading) return <Container className="leaderBoardPage"><p>Loading...</p></Container>;
-//   if (error) return <Container className="leaderBoardPage"><p>Error: {error.message}</p></Container>;
-
-//   const { userScores } = data.leaderboard; 
-
-//   userScores.sort((a, b) => b.score - a.score);
-
-//   return (
-//     <Container className="leaderBoardPage">
-//       <h1>Leaderboard</h1>
-//       <Table striped bordered hover>
-//         <thead>
-//           <tr>
-//             <th>#</th>
-//             <th>Username</th>
-//             <th>Score</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {userScores.map((user, index) => (
-//             <tr key={user.username}> Ensuring key is a unique value
-//               <td>{index + 1}</td>
-//               <td>{user.username}</td>
-//               <td>{user.score}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </Table>
-//     </Container>
-//   );
-// };
-
-// export default LeaderboardPage;
-
 import React, { useState } from "react";
 import "./leaderboard.css"; 
+import { QUERY_LEADERBOARD } from "../utils/queries"
+import { useQuery } from "@apollo/client";
 
-const LeaderBoardPage = ({ users, isAuthenticated }) => {
-  // Initialize leaderboardUsers with users or an empty array if users is undefined
-  const [leaderboardUsers, setLeaderboardUsers] = useState(users || []);
+const LeaderBoardPage = () => {
+ 
+  const { loading, error, data: leaderboardData } = useQuery(QUERY_LEADERBOARD)
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const  leaderboardUsers  = leaderboardData.leaderboard
+
+  console.log(leaderboardUsers)
 
 
   return (
@@ -63,7 +30,7 @@ const LeaderBoardPage = ({ users, isAuthenticated }) => {
               <div className="leaderboard-row" key={user.id}>
                 <span className="leaderboard-rank">{index + 1}</span>
                 <span className="leaderboard-username">{user.username}</span>
-                <span className="leaderboard-score">{user.score}</span>
+                <span className="leaderboard-score">{user.highscore}</span>
               </div>
             ))}
           </div>
