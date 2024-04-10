@@ -1,42 +1,41 @@
-import React, { useState } from "react";
-import Table from "react-bootstrap/Table";
-import "./leaderboard.css";
+import React, { useState, useEffect } from "react";
+import { Container, Table } from 'react-bootstrap';
+import { useQuery } from "@apollo/client";
+import { QUERY_LEADERBOARD } from "../utils/queries.js"; 
 
-const LeaderBoardPage = ({ users, isAuthenticated }) => {
-  // Define state to hold user data
-  const [leaderboardUsers, setLeaderboardUsers] = useState(users);
+const LeaderboardPage = () => {
+    const { loading, error, data: userData } = useQuery(QUERY_LEADERBOARD);
 
-  // Function to add a new user to the leaderboard
-  const addUserToLeaderboard = (userData) => {
-    if (isAuthenticated) {
-      setLeaderboardUsers((prevUsers) => [...prevUsers, userData]);
-    } else {
-      alert("You must be signed in to submit your score.");
-    }
-  };
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
-  return (
-    <div className="leaderBoardPage">
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
+    const { userScores } = userData;
 
-          {leaderboardUsers &&
-            leaderboardUsers.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.username}</td>
-              </tr>
-            ))}
-        </tbody>
-      </Table>
-    </div>
-  );
-};
+    userScores.sort((a, b) => b.score - a.score);
 
-export default LeaderBoardPage;
+    return (
+        <Container>
+            <h1>Leaderboard</h1>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {userScores.map((user, index) => (
+                        <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>{user.username}</td>
+                            <td>{user.score}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </Container>
+    );
+}
+
+export default LeaderboardPage;
