@@ -1,25 +1,39 @@
+# Gif Battle Royale
 
-  # Gif Battle Royale
+Gif Battle Royale introduces a fun and competitive way to engage with GIFs, where players are challenged to match GIFs with prompts. It's an interactive way to explore and share laughter with friends and the broader community.
 
-  ## Table of Contents
-  - [Description](#project-description)
-  - [ScreenShot](#screenshot)
-  - [Licensing](#licensing)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contribution](#contribution)
-  - [Questions](#questions)
+## Table of Contents
 
+- [Description](#description)
+- [Features](#features)
+- [ScreenShots](#screenshots)
+- [Licensing](#licensing)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribution](#contribution)
+- [Questions](#questions)
+- [Acknowledgments](#acknowledgments)
 
-  ## Project Description
-  Gif Battle Royale is an all new way to play gif propmt challenger that users will be able to see and use their favorite silly pictures.
+## Description
 
-  ## ScreenShot 
-![Alt text](<Screenshot 2024-04-08 at 8.17.08 PM.png>)
-  
-  ### Licensing 
-  
-  [![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/.)
+Gif Battle Royale is a web-based application that brings users together in a battle of wits and humor. Participants are presented with a prompt and must choose the GIF that best matches or responds to the prompt. The game cycles through various prompts, offering endless entertainment and discovery of hilarious GIFs.
+
+## Features
+
+- **Interactive Gameplay**: Engage with a vast library of GIFs to respond to quirky and funny prompts.
+- **Community Voting**: Vote on the best GIF responses and see which GIFs reign supreme among players.
+- **Leaderboard**: Track top players based on their winning GIF selections.
+- **User Accounts**: Create and customize your profile to keep track of your submissions and wins.
+
+## ScreenShots
+
+![Gif Battle Royale Gameplay](<Screenshot 2024-04-08 at 8.17.08 PM.png>)
+
+## Licensing
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+[![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
   ## Installation 
   How to install ???
@@ -41,4 +55,3 @@
 
   ## Questions 
   For any questions please reach out to [AnthonyCBlanco](https://github.com/AnthonyCBlanco), [Gblow](https://github.com/gblow), [marialwj](https://github.com/marialwj), [EdwardBecerra2](https://github.com/EdwardBecerra2)
-  
