@@ -3,7 +3,7 @@ const typeDefs = `
         _id: ID!
         username: String!
         email: String!
-        highScore: Int
+        highscore: Int
     }
 
     type Prompt {
@@ -27,14 +27,14 @@ const typeDefs = `
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addScore(email: String!, score: Int): User
+        addScore(username: String!, highscore: Int): Auth
         addVote(promptText: String!, gifIndex: Int!): Prompt
-      }
+    }
 
     type Query {
         me: User
         prompt: [Prompt]
-        leaderboard: User
+        leaderboard: [User]
     }
 `
 

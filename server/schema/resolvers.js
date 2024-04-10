@@ -2,17 +2,19 @@ const { User, Prompt } = require('../models')
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
-    Query: {
-        me: async (parent, args, context) => {
-            if (context.user) {
-              const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
-      
-              return userData;
-            }
-      
-            throw AuthenticationError;
-          },
-
+        Query: {
+          me: async (parent, args, context) => {
+              if (context.user) {
+                  try {
+                      const userData = await User.findById(context.user.id);
+                      return userData;
+                  } catch (error) {
+                      throw new Error('Failed to fetch user data');
+                  }
+              } else {
+                  throw new AuthenticationError('You are not authenticated');
+          }
+        },
         prompt: async (parent, args) => {
           const promptData = await Prompt.find()
           if(!promptData) {
@@ -22,11 +24,13 @@ const resolvers = {
           return promptData
         },
         leaderboard: async (parent, args) => {
-          const leaderboardData = await User
-          .find({})
-          .select({ "username": 1, "highscore": 1})
-          
-          return leaderboardData
+          try{
+            const leaderboardData = await User.find().sort({ score: -1 });
+            return leaderboardData
+          } catch(err){
+            console.log(err)
+            return err
+          }
         }
     },
     Mutation: {
@@ -53,9 +57,19 @@ const resolvers = {
           const token = signToken(user);
           return { token, user };
         },
-        addScore: async (parent, { score, username}) => {
-            const user = await User.findOneAndUpdate({ username }, {highscore: score});
-            return(user)
+        addScore: async (parent, { highscore, username }) => {
+          try {
+              const user = await User.findOneAndUpdate(
+                  { username }, 
+                  { highscore: highscore }, 
+                  { new: true } 
+              );
+    
+              return user;
+          } catch (error) {
+              console.error("Error updating user highscore:", error);
+              throw new Error("Failed to update user highscore");
+          }
         },
         addVote : async (parent, { promptText, gifIndex}) => {
           const prompt = await Prompt.findOne({ text: promptText });
@@ -68,7 +82,6 @@ const resolvers = {
 
           return(prompt)
         }
-      
     },
 }
 

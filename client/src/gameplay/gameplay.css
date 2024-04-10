@@ -1,87 +1,127 @@
-/* Base styles to ensure consistency */
-body, html {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-family: 'Outfit', sans-serif !important;
+:root {
+    --color-text: #ffffff;
+    --color-primary: #2a9d8f;
+    --color-secondary: #264653;
+    --color-accent: #e76f51;
+    --color-background-light: #f4f4f4;
+    --color-background-dark: #1a1a2e;
+    --border-radius: 12px;
+    --box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    height: 100%;
+    width: 100%;
 }
 
 .gameContainer {
-    width: 90% !important;
-    max-width: 800px !important;
-    margin: auto !important;
-    padding: 2rem !important;
-    text-align: center !important;
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: var(--color-background-dark);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
 }
 
 .title {
-    font-size: 1.5rem !important;
-    color: #FF1744 !important; 
-    margin-bottom: 1rem !important;
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
 }
 
 .prompt {
-    font-size: 2rem !important;
-    margin: 2rem auto 3rem !important;
-    color: #76FF03 !important;
+    font-size: 1.5rem;
+    color: var(--color-background-light);
+    margin-bottom: 2rem;
 }
 
 .gifGrid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns */
-    gap: 1rem !important;
-    justify-content: center !important;
-    margin-bottom: 2rem !important; /* Extra space before the Next button */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .gifButton {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    background-color: #263238 !important;
-    border: none !important;
-    padding: 0.5rem !important;
-    border-radius: 0.5rem !important;
+    background: transparent;
+    border: 3px solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    flex: 0 1 calc(33% - 1rem); 
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .gifButton:hover {
-    transform: scale(1.05) !important;
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
 }
 
 .gifBox {
-    width: 261px !important;
-    border-radius: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
-    aspect-ratio: 1/1;
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease-in-out;
+}
+
+.gifCaption {
+    margin-top: 0.5rem;
+    color: var(--color-background-light);
+    font-size: 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+button {
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background: var(--color-secondary);
+    color: var(--color-text);
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-accent);
+}
+
+.userScore {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: var(--color-primary);
+}
+
+.resultPercentage {
+    color: #f4f4f4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gifButton {
+        flex: 0 1 calc(50% - 1rem); 
+    }
+}
+
+@media (max-width: 480px) {
+    .gifButton {
+        flex: 0 1 100%; 
+    }
     
-
+    .gameContainer {
+        margin: 20px auto;
+    }
 }
-.gifSelected {
-    transform: scale(1.10) !important;
-}
-
-
-.gifButton p {
-    color: #B2DFDB !important;
-    font-size: 0.9rem !important;
-}
-
-.nextButton {
-    background-color: #4CAF50 !important;
-    color: #ffffff !important;
-    border: none !important;
-    padding: 0.75rem 1.5rem !important;
-    border-radius: 0.5rem !important;
-    font-size: 1rem !important;
-    cursor: pointer !important;
-}
-
-.nextButton:hover {
-    background-color: #388E3C !important;
-}
-
-.modal-content, .modal-header, .modal-body, .modal-footer {
-    background-color: #1e1e1e !important;
-    color: #ffffff !important;
-    border-color: #37474F !important;
-}
-
