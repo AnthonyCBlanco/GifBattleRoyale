@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { QUERY_PROMPT } from "../utils/queries.js";
-import { ADD_VOTE } from "../utils/mutations.js";
+import { ADD_VOTE, ADD_SCORE } from "../utils/mutations.js";
 import { useQuery, useMutation } from "@apollo/client";
 import './gameplay.css';
+import auth from "../utils/auth.js";
 
 const GamePage = () => {
     const { loading, error, data: promptData } = useQuery(QUERY_PROMPT);
+
     const [promptIndex, setPromptIndex] = useState(0);
     const [selectedGif, setSelectedGif] = useState(null)
-    const [addVote] = useMutation(ADD_VOTE)
     const [isSubmitted, SubmitAnswer] = useState(false)
     const [userScore, setUserScore] = useState(0);
+    
+    const [addVote] = useMutation(ADD_VOTE)
+    const [addScore] = useMutation(ADD_SCORE)
 
     useEffect(() => {
         SubmitAnswer(false);
@@ -21,14 +25,27 @@ const GamePage = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     const { prompt } = promptData;
+    const  user  = auth.getProfile().data
+
+    console.log(user)
+    
 
     const handleNextClick = () => {
         if(!isSubmitted) return 
         
         setPromptIndex(prevIndex => prevIndex + 1);
 
-        if(promptIndex > prompt.length){
-            window.location.href = "/endpage"
+        if(promptIndex === 8){
+            console.log("Game Over")
+
+            addScore({
+                variables: {
+                    username: user.username,
+                    highscore: userScore
+                }
+            }).then(() => {
+                window.location.href = '/endpage';
+            });
         }
        
         addVote({

@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1 className='display-2'>Your game has ended. Please come back tomorrow to play again!</h1>,
+    errorElement: <h1 className='display-2'>Error</h1>,
     children: [
       {
         index: true,

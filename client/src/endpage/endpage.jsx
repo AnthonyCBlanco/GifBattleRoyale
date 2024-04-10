@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { QUERY_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 
 const EndPage = () => {
     const [canPlay, setCanPlay] = useState(true);
