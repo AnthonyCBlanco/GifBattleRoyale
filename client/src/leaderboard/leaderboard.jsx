@@ -41,7 +41,7 @@
 // export default LeaderboardPage;
 
 import React, { useState } from "react";
-import "./leaderboard.css"; // Ensure this is the correct path to your CSS file
+import "./leaderboard.css"; 
 
 const LeaderBoardPage = ({ users, isAuthenticated }) => {
   // Initialize leaderboardUsers with users or an empty array if users is undefined

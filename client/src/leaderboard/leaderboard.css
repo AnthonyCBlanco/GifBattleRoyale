@@ -2,7 +2,7 @@
 
 .leaderboard-page {
   font-family: "Outfit", sans-serif;
-  background-color: var(--color-background); /* A light background color */
+  background-color: var(--color-background); 
   color: var(--color-text);
   min-height: 100vh;
   display: flex;
@@ -13,12 +13,12 @@
 
 .leaderboard-container {
   width: 100%;
-  max-width: 960px; /* A comfortable max-width for readability */
+  max-width: 960px; 
   margin: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* A subtle shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   padding: 2rem;
-  background: var(--color-light); /* A lighter color for the container background */
-  border-radius: 8px; /* Soft rounded corners */
+  background: var(--color-light); 
+  border-radius: 8px; 
 }
 
 .leaderboard-title {
@@ -71,8 +71,9 @@
   border-bottom: none; 
 }
 
+/* Hover effect for rows */
 .leaderboard-row:not(.leaderboard-header):hover {
-  background-color: var(--color-hover);
+  background-color: var(--color-hover); 
 }
 
 /* Responsive adjustments */
@@ -84,10 +85,20 @@
 
   .leaderboard-rank, .leaderboard-username, .leaderboard-score {
     flex-basis: 100%;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0; 
   }
 
   .leaderboard-container {
     padding: 1rem;
   }
+}
+
+:root {
+  --color-background: #a7a56a;
+  --color-light: #ffffff;
+  --color-text: #333333;
+  --color-primary: #005f73;
+  --color-accent: #0a9396;
+  --color-border: #e0e0e0;
+  --color-hover: #eef6f6;
 }
