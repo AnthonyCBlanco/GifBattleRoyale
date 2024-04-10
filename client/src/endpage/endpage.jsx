@@ -28,6 +28,7 @@ const EndPage = () => {
     }
 
     return (
+
         <div >
             <Navbar className="navbar-custom">
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
@@ -62,6 +63,7 @@ const EndPage = () => {
                 </div>
             </Container>
         </div>
+
     );
 }
 
