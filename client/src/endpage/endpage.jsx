@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MainNavbar from '../components/navbar';
 import { Container } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom'; // Added useHistory for navigation
+import { Link } from 'react-router-dom'; // Added useHistory for navigation
 import './endpage.css';
 
 const EndPage = () => {
