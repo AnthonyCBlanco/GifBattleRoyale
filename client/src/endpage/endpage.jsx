@@ -4,6 +4,7 @@ import { QUERY_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import MainNavbar from '../components/navbar';
 
 const EndPage = () => {
     const [canPlay, setCanPlay] = useState(true);
@@ -27,20 +28,11 @@ const EndPage = () => {
 
     return (
         <div className="endpage">
-            <Navbar className="navbar-custom">
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="nav-link-custom">
-                        <Nav.Link as={Link} to="/leaderboard">Leaderboard</Nav.Link>
-                        <Nav.Link as={Link} to="/gameplay" onClick={handlePlayAgain}>Play Again</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
+            <MainNavbar />
             <Container className="text-center mt-5">
                 <h1 className="mb-4">Thank You for Playing!</h1>
                 <h2 className="score-text mb-5">
-                    You have completed the game and have earned a score of {localStorage.getItem('score')}
+                    Check out the leaderboard to see how others did!
                 </h2>
                 {canPlay ? (
                     <button onClick={handlePlayAgain} className="btn btn-primary">Play Again</button>

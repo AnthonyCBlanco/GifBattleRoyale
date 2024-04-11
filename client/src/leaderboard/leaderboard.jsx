@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./leaderboard.css"; 
 import { QUERY_LEADERBOARD } from "../utils/queries"
 import { useQuery } from "@apollo/client";
+import MainNavbar from "../components/navbar";
 
 const LeaderBoardPage = () => {
  
@@ -16,6 +17,8 @@ const LeaderBoardPage = () => {
 
 
   return (
+    <>
+    <MainNavbar />
     <div className="leaderboard-page">
       <div className="leaderboard-container">
         <h1 className="leaderboard-title">Leaderboard</h1>
@@ -37,6 +40,7 @@ const LeaderBoardPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
