@@ -91,12 +91,13 @@ const GamePage = () => {
                 {prompt[promptIndex].gifs.map((gif, index) => (
                     <div key={index} className={`gifButton ${index + 1 === selectedGif ? "gifSelected" : ""}`} onClick={() => handleGifClick(index + 1)}>
                         <img src={gif.endpoint} alt={`GIF ${index + 1}`} className="gifBox"/>
-                        <div className="gifCaption">{gif.caption}</div>    
+                        <div className="gifCaption">{gif.caption}</div> 
+                        {isSubmitted && (gif.votes)}   
                     </div>
                 ))}
             </div>
             
-            {isSubmitted && (
+            {/* {isSubmitted && (
                 <div className="results">
                     {prompt[promptIndex].gifs.map((gif, index) => (
                         <div key={index} className="resultPercentage">
@@ -104,7 +105,7 @@ const GamePage = () => {
                         </div>
                     ))}
                 </div>
-            )}
+            )} */}
 
             <div className="buttons">
                 <button className="submit" onClick={handleSubmitClick}>Submit</button>
