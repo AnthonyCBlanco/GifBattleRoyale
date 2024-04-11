@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Container, Button } from 'react-bootstrap';
 import { QUERY_PROMPT } from "../utils/queries.js";
 import { ADD_VOTE, ADD_SCORE } from "../utils/mutations.js";
 import { useQuery, useMutation } from "@apollo/client";
@@ -27,7 +26,20 @@ const GamePage = () => {
     const { prompt } = promptData;
     const  user  = auth.getProfile().data
 
-    console.log(user)
+    console.log(prompt.length)
+
+    if(promptIndex === prompt.length){
+        console.log("Game Over")
+
+        addScore({
+            variables: {
+                username: user.username,
+                highscore: userScore
+            }
+        }).then(() => {
+            window.location.href = '/endpage';
+        });
+    }
     
 
     const handleNextClick = () => {
@@ -35,18 +47,7 @@ const GamePage = () => {
         
         setPromptIndex(prevIndex => prevIndex + 1);
 
-        if(promptIndex === 8){
-            console.log("Game Over")
-
-            addScore({
-                variables: {
-                    username: user.username,
-                    highscore: userScore
-                }
-            }).then(() => {
-                window.location.href = '/endpage';
-            });
-        }
+        
        
         addVote({
             variables: {
@@ -59,7 +60,6 @@ const GamePage = () => {
     const handleGifClick = (gifIndex) => {
         console.log("gif clicked:", gifIndex)
         setSelectedGif(gifIndex)
-        
     }
 
     const handleSubmitClick = () =>{

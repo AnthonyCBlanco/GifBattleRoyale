@@ -29,7 +29,7 @@ export const ADD_SCORE = gql`
     addScore(username: $username, highscore: $highscore) {
       user {
         username
-        highScore
+        highscore
       }
     }
   }

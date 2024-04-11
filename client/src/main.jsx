@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1 className='display-2'>Error</h1>,
+    errorElement: <h1 className='display-2'></h1>,
 
     children: [
       {

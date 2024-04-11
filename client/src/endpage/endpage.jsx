@@ -21,7 +21,7 @@ const EndPage = () => {
 
     const handlePlayAgain = () => {
         // Redirect to gameplay page and set the timestamp
-        localStorage.setItem('lastPlayTimestamp', new Date().getTime());
+        // localStorage.setItem('lastPlayTimestamp', new Date().getTime());
         window.location.href = '/play';
     }
 
